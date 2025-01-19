@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { axiosPublic } from '../../Hooks/useAxiosPublic';
+import  useAxiosPublic  from '../../Hooks/useAxiosPublic';
 import { Helmet } from 'react-helmet-async'; 
 import {toast} from 'react-toastify';
 
@@ -7,19 +7,22 @@ import {toast} from 'react-toastify';
 const Announcements = () => {
     const [announcements, setAnnouncements] = useState([]);
     const [count, setCount] = useState(0);
+    const axiosInstance = useAxiosPublic();
 
     useEffect(() => {
         const fetchAnnouncements = async () => {
             try {
-                const response = await axiosPublic.get('/posts/announcements');
+                const response = await axiosInstance.get('/posts/announcements');
                 setAnnouncements(response.data.announcements);
                 setCount(response.data.count);
+                toast.success('Announcements fetched successfully.');
             } catch (err) {
                 console.error(err);
+                toast.error('Failed to fetch announcements.');
             }
         };
         fetchAnnouncements();
-    }, []);
+    }, [axiosInstance]);
 
     return (
         <div className="mt-6">
