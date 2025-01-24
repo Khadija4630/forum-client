@@ -6,26 +6,33 @@ import {
   FaLinkedin,
   FaGithub,
 } from "react-icons/fa";
+import logo from "../../../assets/forum.png";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-gray-300 py-8">
-      <div className="max-w-6xl mx-auto px-4 md:flex md:justify-between md:items-start">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="mb-6 md:mb-0">
-          <h2 className="text-xl font-bold text-white">About Us</h2>
+             <img  className="md:w-44 w-20 text-2xl font-bold text-white" src={logo} alt="" />
+            {/* <p className="font-bold text-2xl text-white  "> Forum </p> */}
+          
+        </div>
+     <div className="grid grid-cols-1 md:grid-cols-2">
+     <div>
+       <h2 className="text-xl font-bold text-white mt-2">About Us</h2>
           <p className="mt-2 text-sm">
             Welcome to our community! We are dedicated to providing a platform
             where people can connect, share ideas, and grow together.
           </p>
-        </div>
-        <div className="mb-6 md:mb-0">
-          <h2 className="text-xl font-bold text-white">Follow Us</h2>
+       </div>
+       <div className="mb-6 md:mb-0 md:ml-2">
+          <h2 className="text-xl font-bold text-white mt-2 ">Follow Us</h2>
           <div className="flex mt-2 space-x-4">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-500 transition"
+              className="hover:text-lime-500 transition"
             >
               <FaFacebook size={24} />
             </a>
@@ -33,7 +40,7 @@ const Footer = () => {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-400 transition"
+              className="hover:text-lime-400 transition"
             >
               <FaTwitter size={24} />
             </a>
@@ -49,7 +56,7 @@ const Footer = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-700 transition"
+              className="hover:text-lime-700 transition"
             >
               <FaLinkedin size={24} />
             </a>
@@ -63,26 +70,27 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div>
+     </div>
+        <div className="mt-3">
           <h2 className="text-xl font-bold text-white">Contact Us</h2>
           <form className="mt-4 space-y-3">
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full p-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-lime-500"
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="w-full p-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-lime-500"
             />
             <textarea
               placeholder="Your Message"
-              className="w-full p-2 bg-gray-700 text-white rounded h-24 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 bg-gray-700 text-white rounded h-24 focus:outline-none focus:ring-2 focus:ring-lime-500"
             />
             <button
               type="submit"
-              className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+              className="w-full p-2 bg-opacity-60 bg-lime-500 text-white rounded hover:bg-lime-600 transition"
             >
               Send Message
             </button>

@@ -6,7 +6,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { FaBell } from "react-icons/fa";
 import logo from "../../../assets/forum.png";
 
-const NavBar = () => {
+const NavBar = ({notificationCount}) => {
     const { user, logOut } = useContext(AuthContext);
     // const [isAdmin] = useAdmin();
     // const [cart] = useCart();
@@ -52,7 +52,7 @@ const NavBar = () => {
 
     return (
        
-            <div className="navbar text-black fixed  top-0 mb-2  z-10 bg-opacity-65  rounded-lg shadow-lg bg-lime-500 max-w-7xl mx-auto">
+            <div className="navbar text-black fixed top-0 left-0 mb-2  z-10 bg-opacity-20  rounded-lg shadow-lg bg-lime-500  ">
                 <div className="navbar-start">
                     <div className="dropdown md:hidden">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -73,9 +73,11 @@ const NavBar = () => {
                 <div className="navbar-end flex items-center space-x-4">
                 <button className="btn btn-ghost relative">
                     <FaBell />
-                    <span className="absolute -top-2 -right-2 bg-red-500 rounded-full text-xs px-2">
-                        3
-                    </span>
+                    {notificationCount > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 rounded-full text-xs px-2">
+              {notificationCount}
+            </span>
+          )}
                 </button>
 
                 {user ? (
@@ -108,7 +110,7 @@ const NavBar = () => {
                         )}
                     </div>
                 ) : (
-                    <Link to="/login" className="btn">Join Us</Link>
+                    <Link to="/login" className="btn bg-lime-200">Join Us</Link>
                 )}
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../Providers/AuthProvider";
 import { toast } from "react-toastify";
 
 const Membership= () => {

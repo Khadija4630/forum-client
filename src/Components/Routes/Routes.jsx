@@ -3,6 +3,9 @@ import {
   } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Layout/Home";
+// import Membership from "../Pages/Membership/Membership";
+// import Login from "../Pages/Login/Login";
+// import PostDetails from "../Pages/PostDetails/PostDetails";
 // import Menu from "../pages/Menu/Menu/Menu";
 // import Order from "../pages/Order/Order/Order";
 // import Login from "../pages/Login/Login";
@@ -31,18 +34,27 @@ import Home from "../Layout/Home";
             path: '/',
             element: <Home></Home>,
         }, 
+        // {
+        //   path: '/membership', 
+        //   element:<Membership></Membership>
+        // },
+        // {
+        //   path:"/login",
+        //   element:<Login></Login>
+        // },
+        // {
+        //   path:"/post/:id",
+        //   element:<PostDetails></PostDetails>
+        // },
         {
-          path: '/membership', 
-          element: <h2>Membership</h2>
-        },
+          path: "/*",
+          element: <div>404</div>
+        }
         // {
         //   path: '',
         //   element: <Order></Order>
         // },
-        // {
-        //   path: 'login',
-        //   element: <Login></Login>
-        // },
+        
         // {
         //   path: 'signup',
         //   element: <SignUp></SignUp>

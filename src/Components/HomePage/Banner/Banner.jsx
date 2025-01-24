@@ -1,64 +1,37 @@
-// import useFetch from "../../Hooks/useFetch";
+
 import { useState } from "react";
-import useFetchPosts from "../../Hooks/useFetchBanner";
+import { useNavigate } from "react-router-dom";
 import { Navigation,Pagination, Scrollbar,Autoplay,Parallax } from 'swiper/modules';
 import   {Swiper, SwiperSlide }from "swiper/react";
 import "swiper/css/bundle";
 import Banner1 from "../../../assets/banner1.jpeg";
 import Banner2 from "../../../assets/banner2.jpg";
 import Banner3 from "../../../assets/banner4.jpg";
-import useFetchTags from "../../Hooks/useFetchTags";
+import useFetchTags from "../../Hooks/useFetchTags.jsx";
+import { FaSearch } from "react-icons/fa";
+import Posts from "../../Pages/Posts/Posts.jsx";
 
 
 const Banner = () => {
   const [query, setQuery] = useState("");
-//   // const [results, setResults] = useState([]);
-const [page, setPage] = useState(1); 
-const [sortBy, setSortBy] = useState("newest");
+  const navigate = useNavigate();
 
 const { data: tags = [] } = useFetchTags();
-const { data: posts = [], isLoading: postsLoading, refetch } = useFetchPosts(page, 5, query, sortBy);
 
-//   const { data: tags, isLoading: tagsLoading } = useFetchBanner({});
-
-//   // Fetching posts based on pagination, sorting, and query parameters
-//   const {
-//     data: posts = [],
-//     isLoading,
-//     error,
-//   } = useFetchBanner(
-//     { tag: query }, // Passing query parameters for filtering by tags
-//     page,
-//     sortBy // Passing sorting preference (newest/popularity)
-//   );
-
-
-//   if (isLoading) return <p>Loading posts...</p>;
-//   if (error) return <p>Error fetching posts: {error.message}</p>;
-//   // const handleSearch = async () => {
-//   //     try {
-//   //         const response = await axiosPublic.get(`/posts/search?tag=${query}`);
-//   //         setResults(response.data);
-//   //     } catch (error) {
-//   //         console.error("Error fetching search results:", error);
-//   //     }
-//   // };
-
-  const handleSearch = () => {
-    refetch();
-    setPage(1);
+const handleSearch = () => {
+    if (query.trim()) {
+      navigate(`/posts?query=${Posts(query.trim())}`);
+    }
   };
-//   const handlePagination = (newPage) => {
-//     setPage(newPage);
-//   };
 
-//   const handleSort = (sortType) => {
-//     setSortBy(sortType);
-//   };
-const handleSortByPopularity = () => {
-    setSortBy("popularity");
-    refetch();
-};
+  const handleTagClick = (tag) => {
+    navigate(`/posts?query=${Posts(tag)}`);
+  };
+
+// const handleSortByPopularity = () => {
+//     setSortBy("popularity");
+//     refetch();
+// };
   return (
     <div className="pt-16 mt-1 bg-gray-100">
       <div className="max-w-4xl mx-auto">
@@ -108,7 +81,7 @@ const handleSortByPopularity = () => {
             <img
               src={Banner1}
               alt="Banner 3"
-              className="w-full lg:h-96 md:h-72 h-64 object-cover rounded-lg"
+              className="w-full lg:h-80 md:h-72 h-64 object-cover rounded-lg"
             />
              <div
                 className="absolute top-1/2 left-16 md:left-64 transform -translate-y-1/2 text-white text-xl md:text-2xl lg:text-3xl font-bold"
@@ -120,34 +93,35 @@ const handleSortByPopularity = () => {
         </Swiper>
 
         {/* </div> */}
-         <h1 className="text-2xl font-bold mb-4">Search by Tags</h1>
-        <input
+         <h1 className="md:text-2xl text-xl mt-4 font-bold mb-4">Search by Tags</h1>
+         <div className="flex items-center">
+         <input
           type="text"
-          className="w-full p-2 border rounded"
+          className="w-full p-2  border-r-0 border-l-2 border-t-2 border-b-2 rounded"
           placeholder="Search tags"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          
         />
-        <button
+         <button
           onClick={handleSearch}
-          className="mt-2 p-2 bg-blue-500 text-white rounded"
+          className=" flex border p-2 text-sm md:text-base bg-lime-300 bg-opacity-50 text-gray rounded hover:bg-lime-400 "
         >
-          Search
+       
+        <p className="">Search</p>
+        <p className="mt-1 ml-1"> <FaSearch></FaSearch> </p>
         </button> 
-        <button
-                    onClick={handleSortByPopularity}
-                    className="mt-2 ml-2 p-2 bg-green-500 text-white rounded"
-                >
-                    Sort by Popularity
-                </button>
+         </div>
+        
         <div className="mt-4">
           <h2 className="text-lg font-semibold">Available Tags</h2>
           <div className="flex flex-wrap mt-2">
             {tags.map((tag, index) => (
               <span
                 key={index}
-                onClick={() => setQuery(tag)}
-                className="p-2 bg-blue-200 rounded m-1 cursor-pointer"
+                // onClick={() => setQuery(tag)}
+                onClick={() => handleTagClick(tag)}
+                className="p-2 bg-lime-300 bg-opacity-40 rounded m-1 cursor-pointer"
               >
                 {tag}
               </span>
@@ -155,7 +129,17 @@ const handleSortByPopularity = () => {
         </div>
 
   </div>
-  <div className="mt-4">
+  {/* <div className="mt-4 bg-base-200 rounded-lg">
+        <button
+                    onClick={handleSortByPopularity}
+                    className=" mt-2 flex p-2 bg-lime-300 bg-opacity-50 text-sm md:text-base text-gray rounded  hover:bg-lime-400 "
+                >
+                   <p>Sort by Popularity</p>
+                    <p className="mt-1 ml-1"> <FaArrowTrendUp></FaArrowTrendUp> </p>
+                </button>
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+               
+ 
     {postsLoading ? (
       <p>Loading posts...</p>
     ) : posts.length > 0 ? (
@@ -163,7 +147,7 @@ const handleSortByPopularity = () => {
         <div key={post._id} className="p-4 bg-white shadow mb-4">
              <div className="flex items-center mb-2">
                                 <img
-                                    src={post.authorImage || "/default-avatar.png"}
+                                    src={post.authorPicture || "/default-avatar.png"}
                                     alt="Author"
                                     className="w-12 h-12 rounded-full mr-3"
                                 />
@@ -189,22 +173,35 @@ const handleSortByPopularity = () => {
       <p>No results found</p>
     )}
   </div>
-    <div className="mt-4 flex justify-center">
-                    <button
-                        onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                        className="p-2 bg-gray-300 rounded mr-2"
-                        disabled={page === 1}
-                    >
-                        Previous
-                    </button>
-                    <span>Page {page}</span>
-                    <button
-                        onClick={() => setPage((prev) => prev + 1)}
-                        className="p-2 bg-gray-300 rounded ml-2"
-                    >
-                        Next
-                    </button>
-                </div>
+  </div> */}
+                {/* <div className="mt-4 flex items-center justify-center space-x-4">
+    <button
+        onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+        className={`p-3 rounded-lg font-medium mb-2 ${
+            page === 1
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-lime-500 bg-opacity-50  text-white hover:bg-lime-600 "
+        }`}
+        disabled={page === 1}
+    >
+        Prev
+    </button>
+    <span className="px-2 py-2 text-lg font-semibold bg-gray-100 rounded-lg">
+         {page}
+    </span>
+    <button
+        onClick={() => setPage((prev) => prev + 1)}
+        className={`p-3 rounded-lg font-medium ${
+            posts.length === 0
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-lime-500 bg-opacity-50  text-white hover:bg-lime-600 mb-2"
+        }`}
+        disabled={posts.length === 0}
+    >
+        Next
+    </button>
+</div> */}
+
 </div>
 </div>
 
