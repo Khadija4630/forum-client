@@ -13,20 +13,20 @@ const Footer = () => {
     <footer className="bg-gray-800 text-gray-300 py-8">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-6 md:mb-0">
-             <img  className="md:w-44 w-20 text-2xl font-bold text-white" src={logo} alt="" />
+             <img  className="md:w-44 w-20 text-3xl font-bold text-white" src={logo} alt="" />
             {/* <p className="font-bold text-2xl text-white  "> Forum </p> */}
           
         </div>
      <div className="grid grid-cols-1 md:grid-cols-2">
      <div>
-       <h2 className="text-xl font-bold text-white mt-2">About Us</h2>
+       <h2 className="text-2xl font-bold text-white mt-2">About Us</h2>
           <p className="mt-2 text-sm">
             Welcome to our community! We are dedicated to providing a platform
             where people can connect, share ideas, and grow together.
           </p>
        </div>
        <div className="mb-6 md:mb-0 md:ml-2">
-          <h2 className="text-xl font-bold text-white mt-2 ">Follow Us</h2>
+          <h2 className="text-2xl font-bold text-white mt-2 ">Follow Us</h2>
           <div className="flex mt-2 space-x-4">
             <a
               href="https://facebook.com"
@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
      </div>
         <div className="mt-3">
-          <h2 className="text-xl font-bold text-white">Contact Us</h2>
+          <h2 className="text-2xl font-bold text-white mt-2">Contact Us</h2>
           <form className="mt-4 space-y-3">
             <input
               type="text"
@@ -99,7 +99,7 @@ const Footer = () => {
       </div>
       <div className="mt-8 border-t border-gray-600 pt-4 text-center">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} Your Website. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Forum. All Rights Reserved.
         </p>
       </div>
     </footer>

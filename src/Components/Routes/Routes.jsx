@@ -3,8 +3,14 @@ import {
   } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Layout/Home";
-// import Membership from "../Pages/Membership/Membership";
-// import Login from "../Pages/Login/Login";
+import Membership from "../Pages/Membership/Membership";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
+import DashboardLayout from "../Layout/DashboardLayout";
+import MyProfile from "../Pages/Dashboard/Profile/MyProfile";
+import AddPosts from "../Pages/Dashboard/AddPosts/AddPosts";
+import MyPosts from "../Pages/Dashboard/MyPosts/MyPosts";
+import PrivateRoute from "./PrivateRoute";
 // import PostDetails from "../Pages/PostDetails/PostDetails";
 // import Menu from "../pages/Menu/Menu/Menu";
 // import Order from "../pages/Order/Order/Order";
@@ -34,14 +40,18 @@ import Home from "../Layout/Home";
             path: '/',
             element: <Home></Home>,
         }, 
-        // {
-        //   path: '/membership', 
-        //   element:<Membership></Membership>
-        // },
-        // {
-        //   path:"/login",
-        //   element:<Login></Login>
-        // },
+        {
+          path: '/membership', 
+          element:<PrivateRoute><Membership></Membership></PrivateRoute>
+        },
+        {
+          path:"/login",
+          element:<Login></Login>
+        },
+        {
+          path:"/register",
+          element:<Register></Register>
+        },
         // {
         //   path:"/post/:id",
         //   element:<PostDetails></PostDetails>
@@ -54,11 +64,6 @@ import Home from "../Layout/Home";
         //   path: '',
         //   element: <Order></Order>
         // },
-        
-        // {
-        //   path: 'signup',
-        //   element: <SignUp></SignUp>
-        // },
         // {
         //   path: 'secret',
         //   element: <PrivateRoute><Secret></Secret></PrivateRoute>
@@ -66,11 +71,21 @@ import Home from "../Layout/Home";
       ]
     },
     {
-      path: 'dashboard',
-    //   element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-    element : <h2>Dashboard</h2>,
+      path: '/dashboard',
+      element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
     //     // normal user routes
+    {
+      path:'/dashboard/my-profile',
+      element:<MyProfile></MyProfile>,
+    },
+    {path:'/dashboard/add-posts',
+      element:<AddPosts></AddPosts>,
+    },
+    {
+      path:'/dashboard/my-posts',
+      element:<MyPosts></MyPosts>,
+    },
     //     {
     //       path: 'userHome',
     //       element: <UserHome></UserHome>

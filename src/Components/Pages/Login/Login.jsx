@@ -1,16 +1,18 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext,  useState } from 'react';
 // import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ToastContainer, toast } from 'react-toastify';
-// import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import SocialLogin from '../SocialLogin/SocialLogin';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Login = () => {
-    const [disabled, setDisabled] = useState(true);
+    // const [disabled, setDisabled] = useState(true);
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const axios = useAxiosPublic();
 
     const from = location.state?.from?.pathname || "/";
     console.log('state in the location login page', location.state)
@@ -29,15 +31,27 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-               toast.success({
-                    title: 'User Login Successful.',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                });
+                const userInfo = {
+                    email: user.email,
+                    name: user.displayName || "Anonymous", 
+                    photoURL: user.photoURL || "/default-avatar.png",
+                };
+        
+                // Send user data to the database
+                const response =  axios.post("/users", userInfo); 
+                console.log("User saved to database:", response.data);
+                toast.success("User Login Successful!");
+            //     const user = result.user;
+            //     console.log(user);
+            //    toast.success({
+            //         title: 'User Login Successful.',
+            //         showClass: {
+            //             popup: 'animate__animated animate__fadeInDown'
+            //         },
+            //         hideClass: {
+            //             popup: 'animate__animated animate__fadeOutUp'
+            //         }
+            //     });
                 navigate(from, { replace: true });
             })
     }
@@ -55,15 +69,15 @@ const Login = () => {
     return (
         <>
             <Helmet>
-                <title>Bistro Boss | Login</title>
+                <title>Forum | Login</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col md:flex-row-reverse">
+            <div className=" bg-base-200 ">
+                <div className=" sm:flex-col md:flex justify-center  items-center mx-auto py-8">
                     <div className="text-center md:w-1/2 lg:text-left">
                         <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p className="text-lg mt-4">Login to your account to continue.</p>
                     </div>
-                    <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+                    <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100 mt-4">
                         <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -80,19 +94,19 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control">
+                            {/* <div className="form-control">
                                 <label className="label">
                                     <LoadCanvasTemplate />
                                 </label>
                                 <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" />
 
-                            </div>
+                            </div> */}
                             <div className="form-control mt-6">
                                 {/* TODO: apply disabled for re captcha */}
-                                <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
+                                <input disabled={false} className="btn bg-lime-500 bg-opacity-50" type="submit" value="Login" />
                             </div>
                         </form>
-                        <p className='px-6'><small>New Here? <Link to="/signup">Create an account</Link> </small></p>
+                        <p className='px-6'><small className='text-xl font-semibold hover:bg-lime-500'>New Here? <Link to="/register">Create an account</Link> </small></p>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>

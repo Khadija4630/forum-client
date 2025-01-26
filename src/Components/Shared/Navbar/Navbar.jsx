@@ -11,6 +11,7 @@ const NavBar = ({notificationCount}) => {
     // const [isAdmin] = useAdmin();
     // const [cart] = useCart();
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    
 
     const handleLogOut = () => {
         logOut()
@@ -87,14 +88,14 @@ const NavBar = ({notificationCount}) => {
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                         >
                             <div className="w-10 rounded-full">
-                                <img src={user.photoURL || "/default-avatar.png"} alt="profile" />
+                                <img src={user.photoURL} alt="profile" />
                             </div>
                         </button>
                         {dropdownOpen && (
                             <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 absolute right-0">
                                 <li>
                                     <span className="font-bold text-center">
-                                        {user.displayName || "User"}
+                                        {user.displayName }
                                     </span>
                                 </li>
                                 <li><Link to="/dashboard">Dashboard</Link></li>
