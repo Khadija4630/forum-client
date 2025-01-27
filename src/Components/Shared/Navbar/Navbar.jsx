@@ -5,13 +5,16 @@ import { AuthContext } from "../../Providers/AuthProvider";
 // import useAdmin from "../../../hooks/useAdmin";
 import { FaBell } from "react-icons/fa";
 import logo from "../../../assets/forum.png";
+import { MdDashboard } from "react-icons/md";
+import { IoIosLogOut } from "react-icons/io";
+import { CiLogin } from "react-icons/ci";
 
 const NavBar = ({notificationCount}) => {
     const { user, logOut } = useContext(AuthContext);
     // const [isAdmin] = useAdmin();
     // const [cart] = useCart();
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    
+
 
     const handleLogOut = () => {
         logOut()
@@ -53,7 +56,7 @@ const NavBar = ({notificationCount}) => {
 
     return (
        
-            <div className="navbar text-black fixed top-0 left-0 mb-2  z-10 bg-opacity-20  rounded-lg shadow-lg bg-lime-500  ">
+            <div className="navbar text-black fixed top-0 left-0 mb-2  z-10 bg-opacity-85  rounded-lg shadow-lg bg-lime-500  ">
                 <div className="navbar-start">
                     <div className="dropdown md:hidden">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -98,12 +101,15 @@ const NavBar = ({notificationCount}) => {
                                         {user.displayName }
                                     </span>
                                 </li>
-                                <li><Link to="/dashboard">Dashboard</Link></li>
+                                <li><Link to="/dashboard">
+                                <MdDashboard></MdDashboard>
+                                Dashboard</Link></li>
                                 <li>
                                     <button
                                         onClick={handleLogOut}
                                         className="btn btn-ghost w-full text-left"
                                     >
+                                        <IoIosLogOut className="w-10"></IoIosLogOut>
                                         Logout
                                     </button>
                                 </li>
@@ -111,7 +117,9 @@ const NavBar = ({notificationCount}) => {
                         )}
                     </div>
                 ) : (
-                    <Link to="/login" className="btn bg-lime-200">Join Us</Link>
+                    <Link to="/login" className="btn bg-lime-200 bg-opacity-50">
+                        <CiLogin></CiLogin>
+                        Join Us</Link>
                 )}
             </div>
         </div>

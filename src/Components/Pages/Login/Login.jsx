@@ -75,7 +75,7 @@ const Login = () => {
             </Helmet>
             <div className=" bg-base-200 ">
                 <div className=" sm:flex-col md:flex justify-center  items-center mx-auto py-8">
-                    <div className="text-center md:w-1/2 lg:text-left">
+                    <div className="text-center md:w-1/2 ">
                         <h1 className="text-5xl font-bold">Login now!</h1>
                         <p className="text-lg mt-4">Login to your account to continue.</p>
                     </div>
