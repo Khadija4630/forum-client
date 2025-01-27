@@ -36,11 +36,13 @@ const Login = () => {
                     name: user.displayName || "Anonymous", 
                     photoURL: user.photoURL || "/default-avatar.png",
                 };
-        
-                // Send user data to the database
-                const response =  axios.post("/users", userInfo); 
-                console.log("User saved to database:", response.data);
-                toast.success("User Login Successful!");
+                const response =  axios.post("/users", userInfo);
+
+        if (response.data.insertedId) {
+            toast.success("Welcome! Your account has been created.");
+        } else {
+            toast.info("Welcome back!");
+        }
             //     const user = result.user;
             //     console.log(user);
             //    toast.success({

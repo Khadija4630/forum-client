@@ -53,7 +53,7 @@ const AddPost = () => {
     
 
     return (
-        <div className="md:max-w-4xl mx-auto mt-2 md:mt-4 md:p-6 bg-gray-100 rounded-lg shadow-md ">
+        <div className="md:max-w-4xl mx-auto md:mt-4 md:p-6 bg-gray-100 rounded-lg shadow-md ">
             <Helmet>
                 <title>Forum | Add Post</title>
             </Helmet>
@@ -75,7 +75,7 @@ const AddPost = () => {
                             type="text"
                             className="input input-bordered"
                             value={user.photoURL || "No Image Available"}
-                            disabled
+                            
                         />
                     </div>
                     <div className="form-control mb-4">
@@ -86,7 +86,7 @@ const AddPost = () => {
                             type="text"
                             className="input input-bordered"
                             value={user.displayName || "Anonymous"}
-                            disabled
+                        
                         />
                     </div>
                     <div className="form-control mb-4">
@@ -97,7 +97,7 @@ const AddPost = () => {
                             type="email"
                             className="input input-bordered"
                             value={user.email}
-                            disabled
+                            
                         />
                     </div>
             <div className="form-control mb-4">
@@ -130,18 +130,21 @@ const AddPost = () => {
                     <option value="Health">Health</option>
                 </select> */}
             </div>
-            <div className="form-control mb-4">
+            <div className="flex flex-col md:flex-row gap-4">
+            <div className="form-control mb-4 w-1/2 ">
                 <label className="label">
                     <span className="label-text">UpVotes </span>
                 </label>
                 <input type="number" name="upVotes" className="input input-bordered" min="0" />
             </div>
-            <div className="form-control mb-4">
+            <div className="form-control mb-4 w-1/2">
                 <label className="label">
                     <span className="label-text">DownVotes </span>
                 </label>
                 <input type="number" name="downVotes" className="input input-bordered" min="0" />
             </div>
+            </div>
+          
             <button type="submit" className="btn bg-lime-500 bg-opacity-50 w-full">
                 Add Post
             </button>

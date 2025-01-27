@@ -11,6 +11,7 @@ import MyProfile from "../Pages/Dashboard/Profile/MyProfile";
 import AddPosts from "../Pages/Dashboard/AddPosts/AddPosts";
 import MyPosts from "../Pages/Dashboard/MyPosts/MyPosts";
 import PrivateRoute from "./PrivateRoute";
+import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 // import PostDetails from "../Pages/PostDetails/PostDetails";
 // import Menu from "../pages/Menu/Menu/Menu";
 // import Order from "../pages/Order/Order/Order";
@@ -74,7 +75,11 @@ import PrivateRoute from "./PrivateRoute";
       path: '/dashboard',
       element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
-    //     // normal user routes
+      // normal user routes
+      {
+        path: '/dashboard',
+        element: <DashboardHome></DashboardHome>,
+      },
     {
       path:'/dashboard/my-profile',
       element:<MyProfile></MyProfile>,

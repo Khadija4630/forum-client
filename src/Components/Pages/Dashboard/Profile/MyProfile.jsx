@@ -43,7 +43,7 @@ const MyProfile = () => {
             {recentPosts.length > 0 ? (
             <ul className="mt-4 space-y-4">
                 {recentPosts.map((post) => (
-                    <li key={post.id} className="p-4 border rounded-lg shadow-sm">
+                    <li key={post._id} className="p-4 border rounded-lg shadow-sm">
                         {/* <strong>{post.title}</strong>
                         <p>{post.description.slice(0, 50)}...</p> */}
                       <h4 className="text-lg font-bold">{post.title}</h4>

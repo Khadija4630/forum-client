@@ -25,7 +25,6 @@ const DashboardLayout = () => {
                 </ul>
             </div>
 
-            {/* Content Area */}
             <div className="w-3/4 p-4">
                 <Outlet />
             </div>
