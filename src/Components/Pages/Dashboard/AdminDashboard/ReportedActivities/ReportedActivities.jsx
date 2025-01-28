@@ -65,3 +65,4 @@ const ReportedActivities = () => {
 };
 
 export default ReportedActivities;
+   

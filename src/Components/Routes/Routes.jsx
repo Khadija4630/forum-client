@@ -12,6 +12,12 @@ import AddPosts from "../Pages/Dashboard/AddPosts/AddPosts";
 import MyPosts from "../Pages/Dashboard/MyPosts/MyPosts";
 import PrivateRoute from "./PrivateRoute";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
+import AdminDashboard from "../Pages/Dashboard/AdminDashboard/AdminDashboard";
+import AdminRoute from "./AdminRoute";
+import AdminProfile from "../Pages/Dashboard/AdminDashboard/AdminProfile/AdminProfile";
+import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUsers/ManageUsers";
+import ReportedActivities from "../Pages/Dashboard/AdminDashboard/ReportedActivities/ReportedActivities";
+import MakeAnnouncement from "../Pages/Dashboard/AdminDashboard/MakeAnnouncement/MakeAnnouncement";
 // import PostDetails from "../Pages/PostDetails/PostDetails";
 // import Menu from "../pages/Menu/Menu/Menu";
 // import Order from "../pages/Order/Order/Order";
@@ -91,41 +97,34 @@ import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
       path:'/dashboard/my-posts',
       element:<MyPosts></MyPosts>,
     },
-    //     {
-    //       path: 'userHome',
-    //       element: <UserHome></UserHome>
-    //     },
-    //     {
-    //       path: 'cart',
-    //       element: <Cart></Cart>
-    //     },
-    //     {
-    //       path: 'payment',
-    //       element: <Payment></Payment>
-    //     },
-    //     {
-    //       path: 'paymentHistory',
-    //       element: <PaymentHistory></PaymentHistory>
-    //     },
+   
 
     //     // admin only routes
-    //     {
-    //       path: 'adminHome',
-    //       element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
-    //     },
-    //     {
-    //       path: 'addItems',
-    //       element: <AdminRoute><AddItems></AddItems></AdminRoute>
-    //     },
-    //     {
-    //       path: 'manageItems',
-    //       element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
-    //     },
-    //     {
-    //       path: 'updateItem/:id',
-    //       element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-    //       loader: ({params}) => fetch(`https://bistro-boss-server-seven-sage.vercel.app/menu/${params.id}`)
-    //     },
+        {
+          path: '/admin-dashboard',
+          element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>
+        },
+        {
+          path: '/admin-dashboard/profile',
+          element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
+        },
+        {
+          path: '/admin-dashboard/manage-users',
+          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+        },
+        {
+          path: '/admin-dashboard/reports',
+          element: <AdminRoute><ReportedActivities></ReportedActivities></AdminRoute>
+        },
+        {
+          path: '/admin-dashboard/make-announcement',
+          element: <AdminRoute><MakeAnnouncement></MakeAnnouncement></AdminRoute>
+        },
+        // {
+        //   path: 'updateItem/:id',
+        //   element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+        //   loader: ({params}) => fetch(`https://bistro-boss-server-seven-sage.vercel.app/menu/${params.id}`)
+        // },
     //     {
     //       path: 'users',
     //       element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
