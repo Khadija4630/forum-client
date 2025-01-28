@@ -18,24 +18,7 @@ import AdminProfile from "../Pages/Dashboard/AdminDashboard/AdminProfile/AdminPr
 import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUsers/ManageUsers";
 import ReportedActivities from "../Pages/Dashboard/AdminDashboard/ReportedActivities/ReportedActivities";
 import MakeAnnouncement from "../Pages/Dashboard/AdminDashboard/MakeAnnouncement/MakeAnnouncement";
-// import PostDetails from "../Pages/PostDetails/PostDetails";
-// import Menu from "../pages/Menu/Menu/Menu";
-// import Order from "../pages/Order/Order/Order";
-// import Login from "../pages/Login/Login";
-// import SignUp from "../pages/SignUp/SignUp";
-// import PrivateRoute from "./PrivateRoute";
-// import Secret from "../pages/Shared/Secret/Secret";
-// import Dashboard from "../Layout/Dashboard";
-// import Cart from "../pages/Dashboard/Cart/Cart";
-// import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
-// import AddItems from "../pages/Dashboard/AddItems/AddItems";
-// import AdminRoute from "./AdminRoute";
-// import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
-// import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem";
-// import Payment from "../pages/Dashboard/Payment/Payment";
-// import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
-// import UserHome from "../pages/Dashboard/UserHome/UserHome";
-// import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import NotFound from "../Pages/NotFound/NotFound";
 
 
   export const router = createBrowserRouter([
@@ -65,7 +48,7 @@ import MakeAnnouncement from "../Pages/Dashboard/AdminDashboard/MakeAnnouncement
         // },
         {
           path: "/*",
-          element: <div>404</div>
+          element:<NotFound></NotFound>,
         }
         // {
         //   path: '',
@@ -100,26 +83,7 @@ import MakeAnnouncement from "../Pages/Dashboard/AdminDashboard/MakeAnnouncement
    
 
     //     // admin only routes
-        {
-          path: '/dashboard/admin-dashboard',
-          element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>
-        },
-        {
-          path: '/dashboard/admin-dashboard/profile',
-          element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
-        },
-        {
-          path: '/dashboard/admin-dashboard/manage-users',
-          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
-        },
-        {
-          path: '/dashboard/admin-dashboard/reports',
-          element: <AdminRoute><ReportedActivities></ReportedActivities></AdminRoute>
-        },
-        {
-          path: '/dashboard/admin-dashboard/make-announcement',
-          element: <AdminRoute><MakeAnnouncement></MakeAnnouncement></AdminRoute>
-        },
+      
         // {
         //   path: 'updateItem/:id',
         //   element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
@@ -131,5 +95,28 @@ import MakeAnnouncement from "../Pages/Dashboard/AdminDashboard/MakeAnnouncement
     //     }
 
       ],
+    },
+      {
+        path: '/admin-dashboard',
+        element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>,
+      children: [
+        {
+          path: '/admin-dashboard/profile',
+          element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
+        },
+        {
+          path: '/admin-dashboard/manage-users',
+          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+        },
+        {
+          path: '/admin-dashboard/reports',
+          element: <AdminRoute><ReportedActivities></ReportedActivities></AdminRoute>
+        },
+        {
+          path: '/admin-dashboard/make-announcement',
+          element: <AdminRoute><MakeAnnouncement></MakeAnnouncement></AdminRoute>
+        },
+      ],
+
     },
   ]);

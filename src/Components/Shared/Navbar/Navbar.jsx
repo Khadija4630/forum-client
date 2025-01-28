@@ -101,7 +101,7 @@ const NavBar = ({notificationCount}) => {
                                 </li>
                                     <li>
                                         {isAdmin ? (
-                                        <Link to="/dashboard/admin-dashboard">
+                                       <Link to="/admin-dashboard">
                                             <MdDashboard className="w-6"></MdDashboard>
                                             Dashboard
                                         </Link>
