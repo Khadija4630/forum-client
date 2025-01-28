@@ -58,6 +58,7 @@ const Checkout = () => {
             } else if (paymentResult.paymentIntent.status === "succeeded") {
                 await axiosSecure.patch(`/users/${user.email}`, { isMember: true });
                 setSuccess(true);
+                toast.success("Payment successful! You are now a gold member.");
             }
             refetch();
         } catch (error) {
