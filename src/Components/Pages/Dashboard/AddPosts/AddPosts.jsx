@@ -74,7 +74,7 @@ const AddPost = () => {
                         <input
                             type="text"
                             className="input input-bordered"
-                            value={user.photoURL || "No Image Available"}
+                            defaultValue={user.photoURL || "No Image Available"}
                             
                         />
                     </div>
@@ -85,7 +85,7 @@ const AddPost = () => {
                         <input
                             type="text"
                             className="input input-bordered"
-                            value={user.displayName || "Anonymous"}
+                            defaultValue={user.displayName || "Anonymous"}
                         
                         />
                     </div>
@@ -96,7 +96,7 @@ const AddPost = () => {
                         <input
                             type="email"
                             className="input input-bordered"
-                            value={user.email}
+                            defaultValue={user.email}
                             
                         />
                     </div>

@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-// import useCart from "../../../hooks/useCart";
-// import useAdmin from "../../../hooks/useAdmin";
+import useAdmin from "../../Hooks/useAdmin";
 import { FaBell } from "react-icons/fa";
 import logo from "../../../assets/forum.png";
 import { MdDashboard } from "react-icons/md";
@@ -11,8 +10,7 @@ import { CiLogin } from "react-icons/ci";
 
 const NavBar = ({notificationCount}) => {
     const { user, logOut } = useContext(AuthContext);
-    // const [isAdmin] = useAdmin();
-    // const [cart] = useCart();
+    const [isAdmin] = useAdmin();
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
 
@@ -52,6 +50,7 @@ const NavBar = ({notificationCount}) => {
                 {/* <li><Link to="/login">Login</Link></li> */}
             {/* </> */}
         {/* } */} 
+
     </>
 
     return (
@@ -67,7 +66,6 @@ const NavBar = ({notificationCount}) => {
                         </ul>
                     </div>
                     <img  className="md:w-32 w-20" src={logo} alt="" />
-                    {/* <a className="btn btn-ghost normal-case text-xl hidden lg:flex">Forum</a> */}
                 </div>
                 <div className="navbar-center hidden md:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -101,9 +99,19 @@ const NavBar = ({notificationCount}) => {
                                         {user.displayName }
                                     </span>
                                 </li>
+                               {user && isAdmin &&
+                                    <li>
+                                        <Link to="/dashboard/adminHome">
+                                            <MdDashboard className="w-10"></MdDashboard>
+                                            Dashboard
+                                        </Link>
+                                    </li>
+}
+                                {user && !isAdmin && 
                                 <li><Link to="/dashboard">
                                 <MdDashboard></MdDashboard>
                                 Dashboard</Link></li>
+}
                                 <li>
                                     <button
                                         onClick={handleLogOut}

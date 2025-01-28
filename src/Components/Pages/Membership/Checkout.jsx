@@ -2,6 +2,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
     const stripe = useStripe();
@@ -17,7 +18,9 @@ const Checkout = () => {
         axiosSecure
             .post("/create-payment-intent", { email: user.email, amount: 1000 })
             .then((response) => {
-                setClientSecret(response.data.clientSecret);
+                setClientSecret(response.data);
+                
+                // console.log("Client secret:",response.data);
             })
             .catch((error) => {
                 console.error("Error creating payment intent:", error.message);
@@ -60,9 +63,9 @@ const Checkout = () => {
                 setSuccess(true);
                 toast.success("Payment successful! You are now a gold member.");
             }
-            refetch();
+            // refetch();
         } catch (error) {
-            setError("Payment failed. Please try again.");
+            // setError("Payment failed. Please try again.");
         } finally {
             setLoading(false);
         }
@@ -166,7 +169,7 @@ const Checkout = () => {
                 <button
                     type="submit"
                     className="btn bg-lime-500 w-full h-12 text-lg font-semibold rounded-md shadow-md hover:bg-lime-600 transition duration-200"
-                    disabled={!stripe || loading || clientSecret }
+                    disabled={!stripe || loading}
                 >
                     {loading ? "Processing..." : "Pay $10"}
                 </button>
