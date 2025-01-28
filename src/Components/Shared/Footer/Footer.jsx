@@ -10,7 +10,7 @@ import logo from "../../../assets/forum.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-100  text-gray-500 py-8">
+    <footer className="bg-gray-100  text-gray-500 py-8">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-6 md:mb-0">
              <img  className="md:w-44 w-20 text-3xl font-bold text-black" src={logo} alt="" />
