@@ -1,9 +1,9 @@
 import { Outlet, Link } from "react-router-dom";
 
-const AdminDashboardLayout = () => {
+const AdminDashboard= () => {
     return (
         <div className="flex min-h-screen bg-gray-100">
-            {/* Sidebar */}
+
             <aside className="w-1/4 bg-white shadow-lg p-6">
                 <h2 className="text-2xl font-bold text-center text-lime-500 mb-6">Admin Dashboard</h2>
                 <ul className="space-y-4">
@@ -42,7 +42,6 @@ const AdminDashboardLayout = () => {
                 </ul>
             </aside>
 
-            {/* Content */}
             <main className="w-3/4 p-6">
                 <Outlet />
             </main>
@@ -50,4 +49,4 @@ const AdminDashboardLayout = () => {
     );
 };
 
-export default AdminDashboardLayout;
+export default AdminDashboard;
