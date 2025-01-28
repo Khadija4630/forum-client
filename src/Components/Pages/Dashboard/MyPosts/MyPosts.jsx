@@ -10,14 +10,18 @@ const MyPosts = () => {
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const [posts, setPosts] = useState([]);
+    const [totalPages, setTotalPages] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axiosSecure.get(`/posts/user/${user.email}`).then((response) => {
-            setPosts(response.data);
+        axiosSecure.get(`/posts/user/${user.email}?page=${currentPage}&limit=10`).then((response) => {
+            setPosts(response.data.posts);
+            setTotalPages(response.data.totalPages);
+            setLoading(false);
         });
-    }, [user.email, axiosSecure]);
+    }, [user.email,currentPage, axiosSecure]);
 
     const handleDelete = (postId) => {
         if (window.confirm("Are you sure you want to delete this post?")) {
@@ -26,6 +30,11 @@ const MyPosts = () => {
 
         })
         .catch((error) => console.error("Error deleting post:", error.message));
+    }
+};
+const handlePageChange = (page) => {
+    if (page >=1 && page <= totalPages) {
+        setCurrentPage(page);
     }
 };
 
@@ -65,8 +74,48 @@ const MyPosts = () => {
                     ))}
                 </tbody>
             </table>
-        </div>
+            <div className="flex justify-center mt-4">
+                        <button
+                            className={`px-4 py-2 border rounded-l ${
+                                currentPage === 1 ? "bg-gray-300 cursor-not-allowed" : "bg-lime-500 text-white"
+                            }`}
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            disabled={currentPage === 1}
+                        >
+                            Previous
+                        </button>
+                        {[...Array(totalPages)].map((_, index) => (
+                            <button
+                                key={index}
+                                className={`px-4 py-2 border ${
+                                    currentPage === index + 1
+                                        ? "bg-lime-500 text-white"
+                                        : "bg-white hover:bg-gray-200"
+                                }`}
+                                onClick={() => handlePageChange(index + 1)}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                        <button
+                            className={`px-4 py-2 border rounded-r ${
+                                currentPage === totalPages
+                                    ? "bg-gray-300 cursor-not-allowed"
+                                    : "bg-lime-500 text-white"
+                            }`}
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                        >
+                            Next
+                        </button>
+                    </div>
+                </div>
+
     );
 };
 
 export default MyPosts;
+
+
+
+
