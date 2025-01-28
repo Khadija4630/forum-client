@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const AdminProfile = () => {
     const axiosSecure = useAxiosSecure();

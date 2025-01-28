@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { AuthContext } from "../../../../Providers/AuthProvider";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const MakeAnnouncement = () => {
     const { user } = useContext(AuthContext);

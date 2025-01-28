@@ -101,23 +101,23 @@ import MakeAnnouncement from "../Pages/Dashboard/AdminDashboard/MakeAnnouncement
 
     //     // admin only routes
         {
-          path: '/admin-dashboard',
+          path: '/dashboard/admin-dashboard',
           element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>
         },
         {
-          path: '/admin-dashboard/profile',
+          path: '/dashboard/admin-dashboard/profile',
           element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
         },
         {
-          path: '/admin-dashboard/manage-users',
+          path: '/dashboard/admin-dashboard/manage-users',
           element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
         {
-          path: '/admin-dashboard/reports',
+          path: '/dashboard/admin-dashboard/reports',
           element: <AdminRoute><ReportedActivities></ReportedActivities></AdminRoute>
         },
         {
-          path: '/admin-dashboard/make-announcement',
+          path: '/dashboard/admin-dashboard/make-announcement',
           element: <AdminRoute><MakeAnnouncement></MakeAnnouncement></AdminRoute>
         },
         // {

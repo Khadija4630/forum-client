@@ -9,7 +9,7 @@ const AdminDashboard= () => {
                 <ul className="space-y-4">
                     <li>
                         <Link
-                            to="/admin-dashboard/profile"
+                            to="/dashboard/admin-dashboard/profile"
                             className="block p-3 rounded-md text-gray-700 bg-gray-100 hover:bg-lime-500 hover:text-white"
                         >
                             Admin Profile
@@ -17,7 +17,7 @@ const AdminDashboard= () => {
                     </li>
                     <li>
                         <Link
-                            to="/admin-dashboard/manage-users"
+                            to="/dashboard/admin-dashboard/manage-users"
                             className="block p-3 rounded-md text-gray-700 bg-gray-100 hover:bg-lime-500 hover:text-white"
                         >
                             Manage Users
@@ -25,7 +25,7 @@ const AdminDashboard= () => {
                     </li>
                     <li>
                         <Link
-                            to="/admin-dashboard/reports"
+                            to="/dashboard/admin-dashboard/reports"
                             className="block p-3 rounded-md text-gray-700 bg-gray-100 hover:bg-lime-500 hover:text-white"
                         >
                             Reported Activities/Comments
@@ -33,7 +33,7 @@ const AdminDashboard= () => {
                     </li>
                     <li>
                         <Link
-                            to="/admin-dashboard/make-announcement"
+                            to="/dashboard/admin-dashboard/make-announcement"
                             className="block p-3 rounded-md text-gray-700 bg-gray-100 hover:bg-lime-500 hover:text-white"
                         >
                             Make Announcement
