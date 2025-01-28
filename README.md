@@ -85,4 +85,13 @@ MongoDB: NoSQL database to store user data, posts, comments, etc.
 
 Stripe API: For secure and seamless payment processing.
 
+Others:
+Firebase 
+axios 
+react-select 
+react-toastify
+react-hook-form
+react-helmet-async
+ 
+
 

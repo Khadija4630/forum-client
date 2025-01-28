@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
 import { FaComment } from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
@@ -8,21 +8,22 @@ import { Helmet } from "react-helmet-async";
 
 const MyPosts = () => {
     const { user } = useContext(AuthContext);
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axiosPublic.get(`/posts/user/${user.email}`).then((response) => {
+        axiosSecure.get(`/posts/user/${user.email}`).then((response) => {
             setPosts(response.data);
         });
-    }, [user.email, axiosPublic]);
+    }, [user.email, axiosSecure]);
 
     const handleDelete = (postId) => {
         if (window.confirm("Are you sure you want to delete this post?")) {
-        axiosPublic.delete(`/posts/${postId}`).then(() => {
-            setPosts(posts.filter((post) => post.id !== postId));
+        axiosSecure.delete(`/posts/${postId}`).then(() => {
+            setPosts(posts.filter((post) => post._id !== postId));
+
         })
         .catch((error) => console.error("Error deleting post:", error.message));
     }
@@ -52,13 +53,11 @@ const MyPosts = () => {
                             <td  className="border border-gray-200 px-4 py-2 flex gap-2">
                                 <button
                                     className="btn bg-lime-500 text-white px-4 py-2 rounded hover:bg-lime-600 "
-                                    onClick={() => navigate(`/comments/${post.id}`)}
+                                    onClick={() => navigate(`/comments/${post._id}`)}
                                 >
-                                {/* Comment */}
                                     <FaComment></FaComment> 
                                 </button>
                                 <button className="btn bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" onClick={() => handleDelete(post._id)}>
-                                    {/* Delete */}
                                   <FaDeleteLeft></FaDeleteLeft> 
                                 </button>
                             </td>

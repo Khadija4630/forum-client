@@ -19,6 +19,7 @@ import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUsers/ManageUse
 import ReportedActivities from "../Pages/Dashboard/AdminDashboard/ReportedActivities/ReportedActivities";
 import MakeAnnouncement from "../Pages/Dashboard/AdminDashboard/MakeAnnouncement/MakeAnnouncement";
 import NotFound from "../Pages/NotFound/NotFound";
+import CommentsPage from "../Pages/CommentsPage/CommentsPage";
 
 
   export const router = createBrowserRouter([
@@ -80,20 +81,11 @@ import NotFound from "../Pages/NotFound/NotFound";
       path:'/dashboard/my-posts',
       element:<MyPosts></MyPosts>,
     },
-   
-
-    //     // admin only routes
-      
-        // {
-        //   path: 'updateItem/:id',
-        //   element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-        //   loader: ({params}) => fetch(`https://bistro-boss-server-seven-sage.vercel.app/menu/${params.id}`)
-        // },
-    //     {
-    //       path: 'users',
-    //       element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-    //     }
-
+    {
+      path:'/dashboard/comments/:postId',
+      element :<CommentsPage></CommentsPage>
+    }
+    
       ],
     },
       {

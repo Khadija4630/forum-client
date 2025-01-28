@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 
 const CommentsPage = () => {
     const { postId } = useParams();
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure= useAxiosSecure();
     const [comments, setComments] = useState([]);
     const [activeReport, setActiveReport] = useState({});
 
     useEffect(() => {
-        axiosPublic
+        axiosSecure
             .get(`/comments/${postId}`)
             .then((response) => setComments(response.data))
             .catch((error) => console.error("Error fetching comments:", error.message));
-    }, [postId, axiosPublic]);
+    }, [postId, axiosSecure]);
 
     const handleReport = (commentId) => {
         setActiveReport((prev) => ({ ...prev, [commentId]: false }));
