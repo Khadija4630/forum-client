@@ -1,20 +1,28 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import {
+    Chart as ChartJS,
+    ArcElement,
+    Tooltip,
+    Legend,
+} from "chart.js";
+import { AuthContext } from "../../../../Providers/AuthProvider";
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const AdminProfile = () => {
     const axiosSecure = useAxiosSecure();
+    const { user } = useContext(AuthContext);
     const [stats, setStats] = useState({ posts: 0, comments: 0, users: 0 });
     const [tags, setTags] = useState([]);
     const [newTag, setNewTag] = useState("");
 
     useEffect(() => {
-        // Fetch statistics for posts, comments, and users
+       
         axiosSecure.get("/admin/stats").then((response) => {
             setStats(response.data);
         });
 
-        // Fetch existing tags
         axiosSecure.get("/tags").then((response) => {
             setTags(response.data);
         });
@@ -32,17 +40,15 @@ const AdminProfile = () => {
         <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-6">Admin Profile</h2>
             <div className="flex gap-6 mb-6">
-                {/* Admin Info */}
                 <div>
                     <img
-                        src="/default-avatar.png"
+                        src={user.photoURL || "/default-avatar.png"}
                         alt="Admin"
                         className="w-24 h-24 rounded-full shadow-md"
                     />
-                    <h3 className="text-xl font-bold mt-2">Admin Name</h3>
-                    <p className="text-gray-600">admin@example.com</p>
+                    <h3 className="text-xl font-bold mt-2">{user.displayName}</h3>
+                    <p className="text-gray-600">{user.email}</p>
                 </div>
-                {/* Statistics */}
                 <div className="flex-1">
                     <Pie
                         data={{
@@ -55,11 +61,13 @@ const AdminProfile = () => {
                                 },
                             ],
                         }}
+                        options={{
+                            responsive: true,
+                            maintainAspectRatio: false,
+                        }}
                     />
                 </div>
             </div>
-
-            {/* Tag Management */}
             <div>
                 <h3 className="text-lg font-semibold mb-4">Add New Tag</h3>
                 <div className="flex gap-4">
