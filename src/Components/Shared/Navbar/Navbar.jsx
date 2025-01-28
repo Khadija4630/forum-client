@@ -99,19 +99,17 @@ const NavBar = ({notificationCount}) => {
                                         {user.displayName }
                                     </span>
                                 </li>
-                               {user && isAdmin &&
                                     <li>
-                                        <Link to="/dashboard/adminHome">
-                                            <MdDashboard className="w-10"></MdDashboard>
+                                        {isAdmin ? (
+                                        <Link to="/dashboard/admin-dashboard">
+                                            <MdDashboard className="w-6"></MdDashboard>
                                             Dashboard
                                         </Link>
-                                    </li>
-}
-                                {user && !isAdmin && 
-                                <li><Link to="/dashboard">
+                                        ):(<Link to="/dashboard" className="w-6 " >
                                 <MdDashboard></MdDashboard>
-                                Dashboard</Link></li>
-}
+                                Dashboard</Link>
+                                )}
+                                </li>
                                 <li>
                                     <button
                                         onClick={handleLogOut}
