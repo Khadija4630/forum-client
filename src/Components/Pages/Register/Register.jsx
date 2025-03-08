@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import {auth} from "../../Firebase/Firebase.init";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 
 
@@ -51,6 +52,7 @@ const Register = () => {
                             Register
                         </button>
                     </div>
+                    <SocialLogin></SocialLogin>
                     {error && <p className="text-red-500 mt-2">{error}</p>}
                 </form>
                 <p className="mt-4">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { axiosSecure } from "../utils/axiosInstances"; // your reusable axios hook
+import { axiosSecure } from "../utils/axiosInstances";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
@@ -18,7 +18,7 @@ const PostDetails = () => {
     const [upvoteCount, setUpvoteCount] = useState(0);
     const [downvoteCount, setDownvoteCount] = useState(0);
 
-    // Fetch post details
+
     useEffect(() => {
         const fetchPost = async () => {
             try {
@@ -34,7 +34,7 @@ const PostDetails = () => {
         fetchPost();
     }, [_id]);
 
-    // Handle comment submission
+
     const handleCommentSubmit = async () => {
         if (!user) {
             toast.error("You must be logged in to comment.");
@@ -49,7 +49,6 @@ const PostDetails = () => {
         }
     };
 
-    // Handle voting
     const handleVote = async (type) => {
         if (!user) {
             toast.error("You must be logged in to vote.");

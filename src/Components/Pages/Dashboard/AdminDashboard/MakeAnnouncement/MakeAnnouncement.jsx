@@ -18,7 +18,7 @@ const MakeAnnouncement = () => {
             authorName: user.displayName || "Admin",
         };
 
-        axiosSecure.post("/announcements", newAnnouncement).then(() => {
+        axiosSecure.post("/make-announcements", newAnnouncement).then(() => {
             alert("Announcement made successfully!");
             setAnnouncement({ title: "", description: "" });
         });

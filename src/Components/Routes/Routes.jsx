@@ -51,14 +51,8 @@ import CommentsPage from "../Pages/CommentsPage/CommentsPage";
           path: "/*",
           element:<NotFound></NotFound>,
         }
-        // {
-        //   path: '',
-        //   element: <Order></Order>
-        // },
-        // {
-        //   path: 'secret',
-        //   element: <PrivateRoute><Secret></Secret></PrivateRoute>
-        // }
+       
+       
       ]
     },
     {

@@ -5,13 +5,13 @@ const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState("");
+    const [currentPage, setCurrentPage] = useState(0);
 
     useEffect(() => {
-        // Fetch all users
         axiosSecure.get("/users").then((response) => {
             setUsers(response.data);
         });
-    }, [axiosSecure]);
+    }, []);
 
     const handleMakeAdmin = (email) => {
         axiosSecure.patch(`/users/${email}`, { role: "admin" }).then(() => {
@@ -22,13 +22,26 @@ const ManageUsers = () => {
             );
         });
     };
+    const handleNext = () => {
+        if (currentPage < users.length - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePrevious = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    const currentUser = users[currentPage]; 
 
     const filteredUsers = users.filter((user) =>
         user.name.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
-        <div>
+        <div  className="p-4">
             <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
             <input
                 type="text"
@@ -37,7 +50,8 @@ const ManageUsers = () => {
                 placeholder="Search by username"
                 className="p-2 border rounded w-full mb-4"
             />
-            <table className="w-full bg-white rounded shadow">
+            <div className="overflow-x-auto">
+            <table className="lg:w-full bg-white rounded shadow">
                 <thead>
                     <tr className="bg-gray-100">
                         <th className="p-3 text-left">Name</th>
@@ -48,19 +62,19 @@ const ManageUsers = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredUsers.map((user) => (
-                        <tr key={user.email} className="border-b">
-                            <td className="p-3">{user.name}</td>
-                            <td className="p-3">{user.email}</td>
-                            <td className="p-3">{user.role || "User"}</td>
+                    {filteredUsers.map((currentUser) => (
+                        <tr key={currentUser._id} className="border-b">
+                            <td className="p-3">{currentUser.name}</td>
+                            <td className="p-3">{currentUser.email}</td>
+                            <td className="p-3">{currentUser.role || "User"}</td>
                             <td className="p-3">
-                                {user.isMember ? "Member" : "Non-Member"}
+                                {currentUser.isMember ? "Member" : "Non-Member"}
                             </td>
                             <td className="p-3">
-                                {!user.role || user.role !== "admin" ? (
+                                {!currentUser.role || currentUser.role !== "admin" ? (
                                     <button
-                                        onClick={() => handleMakeAdmin(user.email)}
-                                        className="btn bg-blue-500 hover:bg-blue-600 text-white"
+                                        onClick={() => handleMakeAdmin(currentUser.email)}
+                                        className="btn bg-lime-500 bg-opacity-50 hover:bg-lime-600 text-white"
                                     >
                                         Make Admin
                                     </button>
@@ -72,6 +86,23 @@ const ManageUsers = () => {
                     ))}
                 </tbody>
             </table>
+            </div>
+            <div className="flex justify-between mt-4">
+                        <button
+                            onClick={handlePrevious}
+                            disabled={currentPage === 0}
+                            className="btn bg-lime-500 bg-opacity-50  hover:bg-lime-600 text-white disabled:bg-gray-300"
+                        >
+                            Previous
+                        </button>
+                        <button
+                            onClick={handleNext}
+                            disabled={currentPage === users.length - 1}
+                            className="btn bg-lime-500 bg-opacity-50 hover:bg-lime-600 text-white disabled:bg-gray-300"
+                        >
+                            Next
+                        </button>
+                    </div>
         </div>
     );
 };

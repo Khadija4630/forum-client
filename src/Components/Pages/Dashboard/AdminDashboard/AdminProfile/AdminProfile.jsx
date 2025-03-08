@@ -39,14 +39,13 @@ const AdminProfile = () => {
     return (
         <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-6">Admin Profile</h2>
-            <div className="flex gap-6 mb-6">
+            <div className="flex flex-col md:flex-row gap-6 mb-6">
                 <div>
                     <img
-                        src={user.photoURL || "/default-avatar.png"}
-                        alt="Admin"
+                        src={user.photoURL}
                         className="w-24 h-24 rounded-full shadow-md"
                     />
-                    <h3 className="text-xl font-bold mt-2">{user.displayName}</h3>
+                    <h3 className="text-xl font-bold mt-2 text-gray-600">{user.name}</h3>
                     <p className="text-gray-600">{user.email}</p>
                 </div>
                 <div className="flex-1">

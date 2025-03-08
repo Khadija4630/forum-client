@@ -4,8 +4,9 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { useContext } from "react";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
-})
+    baseURL: 'https://forum-server-12.vercel.app',
+    withCredentials: true
+});
 const useAxiosSecure = () => {
     const navigate = useNavigate();
     const { logOut } = useContext(AuthContext);

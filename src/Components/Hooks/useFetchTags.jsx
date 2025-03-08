@@ -5,15 +5,16 @@ const useFetchTags = () => {
     const axiosPublic = useAxiosPublic();
 
     const fetchTags = async () => {
-        const response = await axiosPublic.get('/posts/tags');
-        return response.data;
+        const response = await axiosPublic.get('/tags');
+        const tagsData= response.data[0]?.tags || [];
+
+    const flattenedTags = [...new Set(tagsData.flat())];
+        return flattenedTags;
     };
 
     return useQuery({
         queryKey: ["tags"],
         queryFn: fetchTags,
-        staleTime: 10 * 60 * 1000, 
-        retry: 3, 
     });
 };
 

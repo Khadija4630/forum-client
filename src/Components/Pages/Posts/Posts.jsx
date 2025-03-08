@@ -1,4 +1,3 @@
-// import {Helmet } from 'react-helmet-async';
 // import {toast } from 'react-toastify';
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -7,19 +6,22 @@ import { FaArrowTrendUp } from "react-icons/fa6";
 
 const Posts = () => {
     const [searchParams] = useSearchParams();
-    const [query, setQuery] = useState(searchParams.get("query") || "");
-    // const [query, setQuery] = useState("");
+    // const [query, setQuery] = useState(searchParams.get("query") || "");
+    const query = decodeURIComponent(searchParams.get('query') || '');
     const [page, setPage] = useState(1); 
     const [sortBy, setSortBy] = useState("newest");
     
     const { data: posts = [], isLoading: postsLoading, refetch } = useFetchPosts(page, 5, query, sortBy);
+    useEffect(() => {
+      refetch();
+    }, [query, page, sortBy,refetch]);
+
+
     const handleSortByPopularity = () => {
         setSortBy("popularity");
         refetch();
     };
-    useEffect(() => {
-        refetch();
-      }, [query, page, sortBy]);
+    
     
    
     return (
@@ -35,10 +37,11 @@ const Posts = () => {
                 <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                
  
-    {postsLoading ? (
-      <p>Loading posts...</p>
-    ) : posts.length > 0 ? (
-      posts.map((post) => (
+
+     { postsLoading ? (
+        <p>Loading...</p> 
+      ) :
+     posts.map((post) => (
         <div key={post._id} className="p-4 bg-white shadow mb-4">
              <div className="flex items-center mb-2">
                                 <img
@@ -64,9 +67,7 @@ const Posts = () => {
           </p>
         </div>
       ))
-    ) : (
-      <p>No results found</p>
-    )}
+}
   </div>
   </div> 
                 <div className="mt-4 flex items-center justify-center space-x-4">

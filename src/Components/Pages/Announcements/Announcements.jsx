@@ -21,7 +21,7 @@ const Announcements = () => {
     const createAnnouncement = useMutation({
       mutationFn: async (announcement) => {
         const { data } = await axiosPublic.post('/announcements', announcement);
-        return data;
+        return console.log(data);
       },
       onSuccess: () => {
         refetch(); 

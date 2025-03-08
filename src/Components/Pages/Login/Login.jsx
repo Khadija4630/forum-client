@@ -3,7 +3,7 @@ import { useContext,  useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
@@ -37,23 +37,12 @@ const Login = () => {
                     photoURL: user.photoURL || "/default-avatar.png",
                 };
                 const response =  axios.post("/users", userInfo);
-
-        if (response.data.insertedId) {
+                console.log ("user inserted", response);
+        if ( response.data) {
             toast.success("Welcome! Your account has been created.");
         } else {
             toast.info("Welcome back!");
         }
-            //     const user = result.user;
-            //     console.log(user);
-            //    toast.success({
-            //         title: 'User Login Successful.',
-            //         showClass: {
-            //             popup: 'animate__animated animate__fadeInDown'
-            //         },
-            //         hideClass: {
-            //             popup: 'animate__animated animate__fadeOutUp'
-            //         }
-            //     });
                 navigate(from, { replace: true });
             })
     }
@@ -104,7 +93,7 @@ const Login = () => {
 
                             </div> */}
                             <div className="form-control mt-6">
-                                {/* TODO: apply disabled for re captcha */}
+                               
                                 <input disabled={false} className="btn bg-lime-500 bg-opacity-50" type="submit" value="Login" />
                             </div>
                         </form>

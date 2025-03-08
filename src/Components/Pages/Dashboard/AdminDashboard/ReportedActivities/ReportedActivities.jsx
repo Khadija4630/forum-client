@@ -6,7 +6,6 @@ const ReportedActivities = () => {
     const [reports, setReports] = useState([]);
 
     useEffect(() => {
-        // Fetch all reported activities/comments
         axiosSecure.get("/reports").then((response) => {
             setReports(response.data);
         });
@@ -25,8 +24,9 @@ const ReportedActivities = () => {
     };
 
     return (
-        <div>
+        <div  className="p-4">
             <h2 className="text-2xl font-bold mb-4">Reported Activities</h2>
+            <div className="overflow-x-auto">
             <table className="w-full bg-white rounded shadow">
                 <thead>
                     <tr className="bg-gray-100">
@@ -60,6 +60,7 @@ const ReportedActivities = () => {
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
     );
 };

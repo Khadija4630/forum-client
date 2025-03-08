@@ -10,7 +10,7 @@ import { CiLogin } from "react-icons/ci";
 
 const NavBar = ({notificationCount}) => {
     const { user, logOut } = useContext(AuthContext);
-    const [isAdmin] = useAdmin();
+    const [isAdmin,isAdminLoading] = useAdmin();
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
 
@@ -18,6 +18,9 @@ const NavBar = ({notificationCount}) => {
         logOut()
             .then(() => { })
             .catch(error => console.log(error));
+    }
+    if (isAdminLoading) {
+        return <div></div>;
     }
 
     const navOptions = <>

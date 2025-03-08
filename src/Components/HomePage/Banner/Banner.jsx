@@ -1,41 +1,43 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navigation,Pagination, Scrollbar,Autoplay,Parallax } from 'swiper/modules';
-import   {Swiper, SwiperSlide }from "swiper/react";
-import "swiper/css/bundle";
-import Banner1 from "../../../assets/banner1.jpeg";
+// import { Navigation,Pagination, Scrollbar,Autoplay,Parallax } from 'swiper/modules';
+// import   {Swiper, SwiperSlide }from "swiper/react";
+// import "swiper/css/bundle";
+// import Banner1 from "../../../assets/banner1.jpeg";
 import Banner2 from "../../../assets/banner2.jpg";
-import Banner3 from "../../../assets/banner4.jpg";
+// import Banner3 from "../../../assets/banner4.jpg";
 import useFetchTags from "../../Hooks/useFetchTags.jsx";
 import { FaSearch } from "react-icons/fa";
-import Posts from "../../Pages/Posts/Posts.jsx";
+import useAxiosPublic from "../../Hooks/useAxiosPublic.jsx";
+// import Posts from "../../Pages/Posts/Posts.jsx";
 
 
 const Banner = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  
 
-const { data: tags = [] } = useFetchTags();
+const {data: tags , isLoading, isError} = useFetchTags();
+if (isLoading) return <p>Loading tags...</p>;
+    if (isError) return <p>Error fetching tags!</p>;
 
-const handleSearch = () => {
-    if (query.trim()) {
-      navigate(`/posts?query=${Posts(query.trim())}`);
-    }
-  };
-
-  const handleTagClick = (tag) => {
-    navigate(`/posts?query=${Posts(tag)}`);
-  };
 
 // const handleSortByPopularity = () => {
 //     setSortBy("popularity");
 //     refetch();
 // };
+const onTagClick = (tag) => {
+  navigate(`/posts?query=${tag}`);
+};
+
+const onSearch = () => {
+  navigate (`/posts?query=${query}`);
+}
   return (
-    <div className="pt-16 mt-1 bg-gray-100">
-      <div className="max-w-4xl mx-auto">
-       <Swiper
+    <div className=" mt-1 bg-gray-100 flex flex-col items-center">
+      <div className="mx-auto">
+       {/* <Swiper
           spaceBetween={30}
           slidesPerView={1}
           navigation ={true}
@@ -90,10 +92,10 @@ const handleSearch = () => {
                Join the Biggest Community
               </div>
           </SwiperSlide>
-        </Swiper>
+        </Swiper> */}
 
         {/* </div> */}
-         <h1 className="md:text-2xl text-xl mt-4 font-bold mb-4">Search by Tags</h1>
+         {/* <h1 className="md:text-2xl text-xl mt-4 font-bold mb-4">Search by Tags</h1>
          <div className="flex items-center">
          <input
           type="text"
@@ -111,24 +113,66 @@ const handleSearch = () => {
         <p className="">Search</p>
         <p className="mt-1 ml-1"> <FaSearch></FaSearch> </p>
         </button> 
-         </div>
-        
-        <div className="mt-4">
-          <h2 className="text-lg font-semibold">Available Tags</h2>
-          <div className="flex flex-wrap mt-2">
-            {tags.map((tag, index) => (
-              <span
-                key={index}
-                // onClick={() => setQuery(tag)}
-                onClick={() => handleTagClick(tag)}
-                className="p-2 bg-lime-300 bg-opacity-40 rounded m-1 cursor-pointer"
-              >
-                {tag}
-              </span>
-            ))}
-        </div>
+         </div> */}
 
-  </div>
+<div className="relative">
+          <img src={Banner2} alt="Banner" className="w-full h-64 md:h-72 lg:h-96 object-cover rounded-lg" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
+            <h1 className="text-3xl font-bold ">Search </h1>
+            <div className="flex items-center mt-4">
+              <input
+                type="text"
+                className="w-full p-2  border-r-0 border-l-2 border-t-2 border-b-2 rounded text-black"
+                placeholder="Search tags"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                
+              />
+              <button
+                onClick={onSearch}
+                className=" flex border p-2 text-sm md:text-base bg-lime-300 bg-opacity-50 text-gray rounded hover:bg-lime-400 "
+              >
+                <p className="">Search</p>
+                <p className="mt-1 ml-1"> <FaSearch></FaSearch> </p>
+              </button> 
+              <div className="mt-4">
+          <h2 className="text-lg font-semibold">Popular Tags</h2>
+          <div className="flex flex-wrap mt-2"> {tags.length > 0 ? (
+                 (typeof tags === "string" ? tags.split(",") :tags ).slice(0, 3).map((tag, index) => (
+                  <span
+                    key={index}
+                    onClick={() => onTagClick(tag)}
+                    className="p-2 bg-lime-300 bg-opacity-40 rounded m-1 cursor-pointer"
+                  >
+                    {tag}
+                  </span>
+                ))
+              ) : (
+                <p>No tags found.</p>
+            )}
+        </div></div>
+            </div>
+        
+
+    {/* //                 tags.map((tagGroup, index) => (
+    //                     // <div key={index} className="mb-4">
+    //                     //     <h3 className="text-md font-medium">Tag Group {index + 1}</h3>
+    //                         < className="flex flex-wrap">
+    //                             {tagGroup.map((tag, tagIndex) => ( */}
+    {/* //                                <span
+    //                                     key={tagIndex}
+    //                                     onClick={() => handleTagClick(tag)}
+    //                                     className="p-2 bg-lime-300 bg-opacity-40 rounded m-1 cursor-pointer"
+    //                                 >
+    //                                     {tag}
+    //                                 </>
+    //                             ))}
+    //                             </div>
+    //     // </div>
+    // ))
+               
+
+  // </div>
   {/* <div className="mt-4 bg-base-200 rounded-lg">
         <button
                     onClick={handleSortByPopularity}
@@ -200,12 +244,42 @@ const handleSearch = () => {
     >
         Next
     </button>
-</div> */}
+</div> */} 
 
-</div>
+                  </div>
+                  </div>
+        </div>
+                  <div className="mt-4">
+          <h2 className="text-lg font-semibold">Available Tags</h2>
+          <div className="flex flex-wrap mt-2">
+            {tags.map((tag, index) => (
+              <span
+                key={index}
+                // onClick={() => setQuery(tag)}
+                onClick={() => handleTagClick(tag)}
+                className="p-2 bg-lime-300 bg-opacity-40 rounded m-1 cursor-pointer"
+              >
+                {tag}
+              </span>
+            ))}
+            {/* {tags.length > 0 ? (
+                 (typeof tags === "string" ? tags.split(",") :tags ).slice(0, 3).map((tag, index) => (
+                  <span
+                    key={index}
+                    onClick={() => onTagClick(tag)}
+                    className="p-2 bg-lime-300 bg-opacity-40 rounded m-1 cursor-pointer"
+                  >
+                    {tag}
+                  </span>
+                ))
+              ) : (
+                <p>No tags found.</p>
+            )} */}
+        </div>
+      </div>
 </div>
 
     );
-    };
+  };
 
 export default Banner;

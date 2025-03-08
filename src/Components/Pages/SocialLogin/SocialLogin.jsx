@@ -28,6 +28,7 @@ const SocialLogin = () => {
             }
             axiosPublic.post('/users', userInfo)
                 .then(response => {
+                    navigate('/');
                     console.log(response.data);
                     navigate('/');
                 });
