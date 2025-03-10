@@ -69,7 +69,7 @@ React Query: For efficient server-state management.
 
 Stripe: For handling payment processing.
 
-Chart.js :For visualizing statistics in the admin dashboard.
+Chart.js: For visualizing statistics in the admin dashboard.
 
 Backend
 
@@ -82,11 +82,11 @@ MongoDB: NoSQL database to store user data, posts, comments, etc.
 Stripe API: For secure and seamless payment processing.
 
 Others:
-Firebase 
-axios 
-react-select 
-react-toastify
-react-hook-form
+Firebase,
+axios ,
+react-select ,
+react-toastify ,
+react-hook-form ,
 react-helmet-async
  
 
