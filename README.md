@@ -9,8 +9,6 @@ https://forum-12-8aedb.web.app/
 
 # Key Features
 
-Authentication: Users can register, log in, and log out securely.
-
 Social Login: Users can sign in using Google.
 
 Private Routes: Certain pages and features are restricted to authenticated users only.
