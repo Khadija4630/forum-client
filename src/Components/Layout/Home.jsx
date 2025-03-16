@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Banner from '../HomePage/Banner/Banner';
+import Banner from '../HomePage/Banner/Banner1';
 import Announcements from '../Pages/Announcements/Announcements';
 
 import Posts from '../Pages/Posts/Posts';
@@ -28,7 +28,7 @@ const Home = () => {
             setQuery={setQuery}
             onSearch={handleSearch}
             onTagClick={handleTagClick}/>
-            <Posts></Posts> 
+            {/* <Posts></Posts>  */}
             <Announcements> </Announcements>
             <Features></Features>
             <PopularDiscussions></PopularDiscussions>

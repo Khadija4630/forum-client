@@ -5,38 +5,41 @@ import { useNavigate } from "react-router-dom";
 // import   {Swiper, SwiperSlide }from "swiper/react";
 // import "swiper/css/bundle";
 // import Banner1 from "../../../assets/banner1.jpeg";
-import Banner2 from "../../../assets/banner2.jpg";
-// import Banner3 from "../../../assets/banner4.jpg";
-import useFetchTags from "../../Hooks/useFetchTags.jsx";
-import { FaSearch } from "react-icons/fa";
-import useAxiosPublic from "../../Hooks/useAxiosPublic.jsx";
-// import Posts from "../../Pages/Posts/Posts.jsx";
+// import Banner2 from "../../../assets/banner2.jpg";
+// // import Banner3 from "../../../assets/banner4.jpg";
+// import useFetchTags from "../../Hooks/useFetchTags.jsx";
+// import { FaSearch } from "react-icons/fa";
+// import useAxiosPublic from "../../Hooks/useAxiosPublic.jsx";
+// // import Posts from "../../Pages/Posts/Posts.jsx";
 
 
-const Banner = () => {
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate();
+// const Banner = () => {
+//   const [query, setQuery] = useState("");
+//   const navigate = useNavigate();
   
 
-const {data: tags , isLoading, isError} = useFetchTags();
-if (isLoading) return <p>Loading tags...</p>;
-    if (isError) return <p>Error fetching tags!</p>;
+// const {data: tags , isLoading, isError} = useFetchTags();
+// if (isLoading) return <p>Loading tags...</p>;
+//     if (isError) return <p>Error fetching tags!</p>;
 
 
-// const handleSortByPopularity = () => {
-//     setSortBy("popularity");
-//     refetch();
+// // const handleSortByPopularity = () => {
+// //     setSortBy("popularity");
+// //     refetch();
+// // };
+// const onTagClick = (tag) => {
+//   navigate(`/posts?query=${tag}`);
 // };
-const onTagClick = (tag) => {
-  navigate(`/posts?query=${tag}`);
-};
 
-const onSearch = () => {
-  navigate (`/posts?query=${query}`);
-}
-  return (
-    <div className=" mt-1 bg-gray-100 flex flex-col items-center">
-      <div className="mx-auto">
+// const onSearch = () => {
+//   navigate (`/posts?query=${query}`);
+// }
+//   return (
+//     <div className=" mt-1 bg-gray-100 flex flex-col items-center">
+//       <div className="mx-auto">
+
+// ends here 
+
        {/* <Swiper
           spaceBetween={30}
           slidesPerView={1}
@@ -115,7 +118,9 @@ const onSearch = () => {
         </button> 
          </div> */}
 
-<div className="relative">
+
+{/* starts here  */}
+{/* <div className="relative">
           <img src={Banner2} alt="Banner" className="w-full h-64 md:h-72 lg:h-96 object-cover rounded-lg" />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
             <h1 className="text-3xl font-bold ">Search </h1>
@@ -151,7 +156,9 @@ const onSearch = () => {
                 <p>No tags found.</p>
             )}
         </div></div>
-            </div>
+            </div> */}
+
+            {/* ends */}
         
 
     {/* //                 tags.map((tagGroup, index) => (
@@ -246,7 +253,8 @@ const onSearch = () => {
     </button>
 </div> */} 
 
-                  </div>
+{/* from here  */}
+                  {/* </div>
                   </div>
         </div>
                   <div className="mt-4">
@@ -275,11 +283,11 @@ const onSearch = () => {
               ) : (
                 <p>No tags found.</p>
             )} */}
-        </div>
-      </div>
-</div>
+//         </div>
+//       </div>
+// </div>
 
-    );
-  };
+//     );
+//   };
 
-export default Banner;
+// export default Banner; */}
