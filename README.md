@@ -1,17 +1,13 @@
 # FORUM
 
 # Purpose
-The Forum Website is a user-friendly platform designed for users to create posts,comment on topics , engage in discussions, and post content related to various topics. It includes features like user authentication,role-based with both user and admin functionalities ,including membership upgrades, post management, and more. the website ensures an engaging and secure user experience.
+The Forum Website is a user-friendly platform designed for users to create posts, comment on topics, engage in discussions, and post content related to various topics. It includes features like role-based with both user and admin functionalities, including membership upgrades, post management, and more. the website ensures an engaging and secure user experience.
 
 # Live URL:
 https://forum-12-8aedb.web.app/
 
 
 # Key Features
-
-Authentication: Users can register, log in, and log out securely.
-
-Social Login: Users can sign in using Google.
 
 Private Routes: Certain pages and features are restricted to authenticated users only.
 
@@ -73,7 +69,7 @@ React Query: For efficient server-state management.
 
 Stripe: For handling payment processing.
 
-Chart.js :For visualizing statistics in the admin dashboard.
+Chart.js: For visualizing statistics in the admin dashboard.
 
 Backend
 
@@ -86,11 +82,11 @@ MongoDB: NoSQL database to store user data, posts, comments, etc.
 Stripe API: For secure and seamless payment processing.
 
 Others:
-Firebase 
-axios 
-react-select 
-react-toastify
-react-hook-form
+Firebase,
+axios ,
+react-select ,
+react-toastify ,
+react-hook-form ,
 react-helmet-async
  
 
