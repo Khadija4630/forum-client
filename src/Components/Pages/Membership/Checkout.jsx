@@ -146,10 +146,10 @@ const Checkout = () => {
                     <p  className="text-lg font-semibold text-gray-700"> Enter your payment information:</p>
                     <div className="flex w-full gap-4">
         <div className="w-1/2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">Full Name:</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1 ">Full Name:</label>
             <input
                 type="text"
-                className="p-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-lime-500"
+                className="p-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-lime-500 dark:bg-white"
                 placeholder="Name"
             />
         </div>
@@ -157,7 +157,7 @@ const Checkout = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Email:</label>
             <input
                 type="email"
-                className="p-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-lime-500"
+                className="p-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-lime-500 dark:bg-white"
                 placeholder="Email"
             />
         </div>
@@ -168,7 +168,7 @@ const Checkout = () => {
                 {error && <p className="text-red-500 ">{error}</p>}
                 <button
                     type="submit"
-                    className="btn bg-lime-500 w-full h-12 text-lg font-semibold rounded-md shadow-md hover:bg-lime-600 transition duration-200"
+                    className="btn bg-lime-500 w-full h-12 text-lg font-semibold rounded-md shadow-md hover:bg-lime-600 transition duration-200 dark:bg-lime-500 dark:hover:bg-lime-600 dark:outline-none"
                     disabled={!stripe || loading}
                 >
                     {loading ? "Processing..." : "Pay $10"}

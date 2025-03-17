@@ -24,15 +24,15 @@ const Membership= () => {
     // };
 
     return (
-        <div className="p-8 mt-10 md:mt-14 ">
+        <div className="p-8 mt-10 md:mt-14 bg-base-200 dark:bg-white dark:text-black">
             {membershipStatus ? (
-                <div className="membership-status">
+                <div className="membership-status bg-white dark:bg-white dark:text-black">
                     <h2 className="font-bold text-3xl">You're a Gold Member</h2>
                     <span className="badge badge-gold text-2xl">Gold</span>
                     <p className="font-semibold text-xl">You can now post more than 5 posts.</p>
                 </div>
             ) : (
-                <div className="membership-payment">
+                <div className="membership-payment bg-white dark:bg-white dark:text-black">
                     <h2 className="font-bold text-3xl mb-6 text-center ">Become a Gold Member</h2>
                     <p className="text-center text-gray-600 mb-4">
                 Pay $10 to become a member and unlock exclusive features, including the ability to make more than 5 posts.

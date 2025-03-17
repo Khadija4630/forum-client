@@ -25,7 +25,7 @@ const MakeAnnouncement = () => {
     };
 
     return (
-        <div className="bg-white p-6 rounded-lg shadow-lg">
+        <div className="bg-white p-6 rounded-lg shadow-lg dark:text-black">
             <h2 className="text-2xl font-bold mb-4">Make an Announcement</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="form-control">
@@ -39,7 +39,7 @@ const MakeAnnouncement = () => {
                             setAnnouncement({ ...announcement, title: e.target.value })
                         }
                         placeholder="Enter announcement title"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full dark:bg-white"
                         required
                     />
                 </div>
@@ -54,15 +54,16 @@ const MakeAnnouncement = () => {
                                 ...announcement,
                                 description: e.target.value,
                             })
+                    
                         }
                         placeholder="Enter announcement description"
-                        className="textarea textarea-bordered w-full"
+                        className="textarea textarea-bordered w-full dark:bg-white"
                         required
                     ></textarea>
                 </div>
                 <button
                     type="submit"
-                    className="btn bg-lime-500 hover:bg-lime-600 w-full"
+                    className="btn bg-lime-500 hover:bg-lime-600 w-full dark:bg-lime-500 dark:hover:bg-lime-400 dark:outline-none dark:border-none dark:text-black dark:hover:text-white"
                 >
                     Submit Announcement
                 </button>

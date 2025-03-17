@@ -22,13 +22,12 @@ const Home = () => {
     setSearchParams({ query: encodeURIComponent(tag) });
   };
     return (
-        <div>
+        <div className="bg-white dark:bg-white dark:text-black">
             <Banner 
             query={query}
             setQuery={setQuery}
             onSearch={handleSearch}
             onTagClick={handleTagClick}/>
-            {/* <Posts></Posts>  */}
             <Announcements> </Announcements>
             <Features></Features>
             <PopularDiscussions></PopularDiscussions>

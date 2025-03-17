@@ -96,7 +96,7 @@ const NavBar = ({notificationCount}) => {
                             </div>
                         </button>
                         {dropdownOpen && (
-                            <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 absolute right-0">
+                            <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 dark:bg-white dark:text-black rounded-box w-52 absolute right-0">
                                 <li>
                                     <span className="font-bold text-center">
                                         {user.displayName }
@@ -126,7 +126,7 @@ const NavBar = ({notificationCount}) => {
                         )}
                     </div>
                 ) : (
-                    <Link to="/login" className="btn bg-lime-200 bg-opacity-50">
+                    <Link to="/login" className="btn bg-lime-400 bg-opacity-50 text-black border border-lime-400 hover:bg-lime-300 dark:bg-lime-400 dark:text-black dark:border-lime-400 dark:hover:bg-lime-600">
                         <CiLogin></CiLogin>
                         Join Us</Link>
                 )}

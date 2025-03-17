@@ -13,6 +13,8 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axios = useAxiosPublic();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const from = location.state?.from?.pathname || "/";
     console.log('state in the location login page', location.state)
@@ -20,6 +22,16 @@ const Login = () => {
     // useEffect(() => {
     //     loadCaptchaEnginge(6);
     // }, [])
+
+    const fillAdminCredentials = () => {
+        setEmail("khadijahaque085@gmail.com");
+        setPassword("Khadijah01.");
+    };
+
+    const fillUserCredentials = () => {
+        setEmail("kaka@gmail.com");
+        setPassword("Khadijah01.");
+    };
 
     const handleLogin = event => {
         event.preventDefault();
@@ -58,7 +70,7 @@ const Login = () => {
     // }
 
     return (
-        <>
+        <div className='bg-base-200 dark:bg-base-200 dark:text-black'>
             <Helmet>
                 <title>Forum | Login</title>
             </Helmet>
@@ -74,13 +86,19 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                                <input type="email" name="email" 
+                                placeholder="email" 
+                                value = {email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" />
+                                <input type="password" name="password" 
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}placeholder="password" className="input input-bordered" />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
@@ -92,6 +110,23 @@ const Login = () => {
                                 <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" />
 
                             </div> */}
+
+<div className="flex space-x-2 mt-2">
+                                <button 
+                                    type="button" 
+                                    onClick={fillAdminCredentials} 
+                                    className="px-4 py-2 bg-lime-500 bg-opacity-50 text-white rounded-lg hover:bg-lime-600 transition"
+                                >
+                                    Admin Login
+                                </button>
+                                <button 
+                                    type="button" 
+                                    onClick={fillUserCredentials} 
+                                    className="px-4 py-2 bg-lime-500 bg-opacity-50 text-white rounded-lg hover:bg-lime-600 transition"
+                                >
+                                    User Login
+                                </button>
+                            </div>
                             <div className="form-control mt-6">
                                
                                 <input disabled={false} className="btn bg-lime-500 bg-opacity-50" type="submit" value="Login" />
@@ -102,7 +137,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -77,14 +77,14 @@ const Banner = () => {
                     >
                         <input
                             type="text"
-                            className="w-full p-2 text-black rounded-l-lg focus:outline-none"
+                            className="w-full p-2 text-black rounded-l-lg focus:outline-none dark:bg-white dark:text-black dark:outline-none"
                             placeholder="Search tags..."
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                         />
                         <button
                             onClick={onSearch}
-                            className="px-4 py-2 bg-lime-500 text-white rounded-r-lg hover:bg-lime-600 flex items-center"
+                            className="px-4 py-2 bg-lime-500 text-white rounded-r-lg hover:bg-lime-600 flex items-center  "
                         >
                             <FaSearch className="mr-1" />
                             Search
@@ -99,7 +99,7 @@ const Banner = () => {
                                     <motion.button
                                         key={index}
                                         onClick={() => onTagClick(tag)}
-                                        className="px-4 py-2 bg-lime-300  bg-opacity-50 rounded-lg m-1 cursor-pointer hover:bg-lime-400 transition"
+                                        className="px-4 py-2 bg-lime-400 bg-opacity-30 rounded-lg m-1 cursor-pointer hover:bg-lime-600 transition"
                                         whileHover={{ scale: 1.1 }}
                                     >
                                         #{tag}
@@ -120,7 +120,7 @@ const Banner = () => {
                             <motion.span
                                 key={index}
                                 onClick={() => onTagClick(tag)}
-                                className="px-4 py-2 bg-lime-300 bg-opacity-50 rounded-lg m-2 cursor-pointer hover:bg-lime-400 transition"
+                                className="px-4 py-2 bg-lime-300  rounded-lg m-2 cursor-pointer hover:bg-lime-400 transition"
                                 whileHover={{ scale: 1.1 }}
                             >
                                 {tag}
@@ -137,7 +137,7 @@ const Banner = () => {
                 <div className="flex justify-center space-x-4 mt-2">
                     <button
                         onClick={() => handleSort("newest")}
-                        className={`px-4 py-2 bg-lime-300 bg-opacity-50 rounded-lg hover:bg-lime-400 transition ${
+                        className={`px-4 py-2 bg-lime-300  rounded-lg hover:bg-lime-400 transition ${
                             sortBy === "newest" ? "bg-lime-500 text-white" : ""
                         }`}
                     >

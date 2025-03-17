@@ -48,7 +48,7 @@ const ManageUsers = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search by username"
-                className="p-2 border rounded w-full mb-4"
+                className="p-2 border rounded w-full mb-4 dark:bg-white"
             />
             <div className="overflow-x-auto">
             <table className="lg:w-full bg-white rounded shadow">
@@ -74,12 +74,12 @@ const ManageUsers = () => {
                                 {!currentUser.role || currentUser.role !== "admin" ? (
                                     <button
                                         onClick={() => handleMakeAdmin(currentUser.email)}
-                                        className="btn bg-lime-500 bg-opacity-50 hover:bg-lime-600 text-white"
+                                        className="btn bg-lime-500 bg-opacity-50 hover:bg-lime-600 text-white dark:bg-lime-500  dark:hover:bg-lime-400 dark:outline-none dark:text-black dark:hover:text-white dark:border-none"
                                     >
                                         Make Admin
                                     </button>
                                 ) : (
-                                    <span className="text-gray-500">Admin</span>
+                                    <span className="text-gray-500  ">Admin</span>
                                 )}
                             </td>
                         </tr>
@@ -91,14 +91,14 @@ const ManageUsers = () => {
                         <button
                             onClick={handlePrevious}
                             disabled={currentPage === 0}
-                            className="btn bg-lime-500 bg-opacity-50  hover:bg-lime-600 text-white disabled:bg-gray-300"
+                            className="btn bg-lime-500 bg-opacity-50  hover:bg-lime-600 text-white disabled:bg-gray-300 dark:bg-lime-500 dark:bg-opacity-50 dark:hover:bg-lime-600 dark:outline-none dark:disabled:bg-gray-300 dark:disabled:text-black"
                         >
                             Previous
                         </button>
                         <button
                             onClick={handleNext}
                             disabled={currentPage === users.length - 1}
-                            className="btn bg-lime-500 bg-opacity-50 hover:bg-lime-600 text-white disabled:bg-gray-300"
+                            className="btn bg-lime-500 bg-opacity-50 hover:bg-lime-600 text-white disabled:bg-gray-300 dark:bg-lime-500  dark:hover:bg-lime-400 dark:text-black dark:hover:text-white dark:border-none dark:outline-none dark:disabled:bg-gray-300 dark:disabled:text-black"
                         >
                             Next
                         </button>

@@ -75,11 +75,11 @@ const AdminProfile = () => {
                         value={newTag}
                         onChange={(e) => setNewTag(e.target.value)}
                         placeholder="Enter tag name"
-                        className="p-2 border rounded w-full"
+                        className="p-2 border rounded w-full dark:bg-white"
                     />
                     <button
                         onClick={handleAddTag}
-                        className="btn bg-lime-500 hover:bg-lime-600 text-white"
+                        className="btn bg-lime-500 hover:bg-lime-600 text-white dark:bg-lime-500 dark:hover:bg-lime-600 dark:border-none"
                     >
                         Add Tag
                     </button>

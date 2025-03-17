@@ -20,6 +20,7 @@ import ReportedActivities from "../Pages/Dashboard/AdminDashboard/ReportedActivi
 import MakeAnnouncement from "../Pages/Dashboard/AdminDashboard/MakeAnnouncement/MakeAnnouncement";
 import NotFound from "../Pages/NotFound/NotFound";
 import CommentsPage from "../Pages/CommentsPage/CommentsPage";
+import AdminOverview from "../Pages/Dashboard/AdminDashboard/AdminOverview/AdminOverview";
 
 
   export const router = createBrowserRouter([
@@ -86,6 +87,11 @@ import CommentsPage from "../Pages/CommentsPage/CommentsPage";
         path: '/admin-dashboard',
         element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>,
       children: [
+        // admin routes
+        {
+          path: '/admin-dashboard',
+          element:<AdminOverview></AdminOverview>,
+        },
         {
           path: '/admin-dashboard/profile',
           element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
