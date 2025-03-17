@@ -55,7 +55,7 @@ const Banner = () => {
                 <img
                     src={Banner2}
                     alt="Forum Banner"
-                    className="w-full h-full object-cover rounded-lg dark:invert-0"
+                    className="w-full h-full object-cover rounded-lg "
                     data-aos="fade-up"
                 />
 

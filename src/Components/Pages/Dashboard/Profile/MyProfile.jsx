@@ -21,7 +21,7 @@ const MyProfile = () => {
     }, [user, axiosPublic]);
 
     return (
-        <div className="max-w-4xl mx-auto mt-8 p-6 bg-gray-100 rounded-lg shadow-md">
+        <div className="max-w-4xl mx-auto mt-8 p-6 bg-gray-100 rounded-lg shadow-md dark:text-black">
             <Helmet>
               <title>  Forum | My Profile</title>
                 </Helmet>

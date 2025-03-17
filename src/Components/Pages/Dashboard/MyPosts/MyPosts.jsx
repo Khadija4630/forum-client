@@ -39,7 +39,7 @@ const handlePageChange = (page) => {
 };
 
     return (
-        <div className="md:max-w-4xl mx-auto mt-2 md:mt-4 md:p-6 bg-gray-100 rounded-lg shadow-md">
+        <div className="md:max-w-4xl mx-auto mt-2 md:mt-4 md:p-6 bg-gray-100 rounded-lg shadow-md dark:text-black">
             <Helmet>
                 <title>Forum | My Posts</title>
             </Helmet>

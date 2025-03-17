@@ -8,15 +8,15 @@ const DashboardHome = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <div className="mt-4 md:mt-8 mb-4 bg-slate-100 rounded-lg flex flex-col items-center justify-center">
+        <div className="mt-4 md:mt-8 mb-4 bg-slate-100 rounded-lg flex flex-col items-center justify-center dark:text-black">
             <Helmet>
                 <title>Forum | Dashboard</title>
             </Helmet>
 
             <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6">
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-800">Welcome to Your Dashboard</h2>
-                    <p className="text-gray-600 mt-2">Manage your profile, posts, and more!</p>
+                    <h2 className="text-3xl font-bold text-gray-800 dark:text-black">Welcome to Your Dashboard</h2>
+                    <p className="text-gray-600 mt-2 dark:text-black">Manage your profile, posts, and more!</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -32,7 +32,7 @@ const DashboardHome = () => {
                         {/* <p className="text-gray-600">{user.email}</p> */}
                         <h3 className="text-lg font-semibold mt-2">My Profile</h3>
                         <p className="text-gray-600 text-center">You can see your profile details here.</p>
-                      <Link to= "/dashboard/my-profile"><button className="mt-4 btn bg-lime-500 bg-opacity-50 w-full">View Profile</button></Link>  
+                      <Link to= "/dashboard/my-profile"><button className="mt-4 btn bg-lime-500 bg-opacity-50 w-full dark:border-none dark:bg-lime-500">View Profile</button></Link>  
                     </div>
 
                     <div className="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow">
@@ -53,8 +53,8 @@ const DashboardHome = () => {
                             </svg>
                         </div>
                         <h3 className="text-lg font-semibold mt-2">Manage Posts</h3>
-                        <p className="text-gray-600 text-center">View, add, or update your posts easily.</p>
-                      <Link to="/dashboard/my-posts"><button className="mt-4 btn bg-lime-500 bg-opacity-50 w-full">Go to Posts</button></Link>  
+                        <p className="text-gray-600 text-center dark:text-black">View, add, or update your posts easily.</p>
+                      <Link to="/dashboard/my-posts"><button className="mt-4 btn bg-lime-500 bg-opacity-50 w-full dark:bg-lime-500 dark:border-none">Go to Posts</button></Link>  
                     </div>
 
                     <div className="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow">
@@ -75,7 +75,7 @@ const DashboardHome = () => {
                             </svg>
                         </div>
                         <h3 className="text-lg font-semibold mt-2">Membership</h3>
-                        <p className="text-gray-600 text-center">
+                        <p className="text-gray-600 text-center dark:text-black">
                             Upgrade to Gold membership and unlock exclusive features.
                         </p>
                     <button className="mt-4 btn bg-yellow-400 text-black w-full">Upgrade Membership</button>

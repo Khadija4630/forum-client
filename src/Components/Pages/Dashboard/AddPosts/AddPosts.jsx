@@ -53,14 +53,14 @@ const AddPost = () => {
     
 
     return (
-        <div className="md:max-w-4xl mx-auto md:mt-4 md:p-6 bg-gray-100 rounded-lg shadow-md ">
+        <div className="md:max-w-4xl mx-auto md:mt-4 md:p-6 bg-gray-100 rounded-lg shadow-md dark:text-black ">
             <Helmet>
                 <title>Forum | Add Post</title>
             </Helmet>
    { formDisabled ? (
         <div className="text-center">
             <p className="text-lg font-bold">You have reached your post limit. Become a member to post more.</p>
-            <button className="btn bg-lime-500 bg-opacity-50 mt-4" onClick={() => navigate("/membership")}>
+            <button className="btn bg-lime-500 bg-opacity-50 mt-4 dark:border-none dark:bg-lime-500" onClick={() => navigate("/membership")}>
                 Become a Member to post more.
             </button>
         </div>
@@ -73,7 +73,7 @@ const AddPost = () => {
                         </label>
                         <input
                             type="text"
-                            className="input input-bordered"
+                            className="input input-bordered dark:bg-white"
                             defaultValue={user.photoURL || "No Image Available"}
                             
                         />
@@ -84,7 +84,7 @@ const AddPost = () => {
                         </label>
                         <input
                             type="text"
-                            className="input input-bordered"
+                            className="input input-bordered dark:bg-white"
                             defaultValue={user.displayName || "Anonymous"}
                         
                         />
@@ -95,7 +95,7 @@ const AddPost = () => {
                         </label>
                         <input
                             type="email"
-                            className="input input-bordered"
+                            className="input input-bordered dark:bg-white"
                             defaultValue={user.email}
                             
                         />
@@ -104,13 +104,13 @@ const AddPost = () => {
                 <label className="label">
                     <span className="label-text">Post Title</span>
                 </label>
-                <input type="text" name="title" className="input input-bordered" required />
+                <input type="text" name="title" className="input input-bordered dark:bg-white" required />
             </div>
             <div className="form-control mb-4">
                 <label className="label">
                     <span className="label-text">Post Description</span>
                 </label>
-                <textarea name="description" className="textarea textarea-bordered" required></textarea>
+                <textarea name="description" className="textarea textarea-bordered dark:bg-white" required></textarea>
             </div>
             <div className="form-control mb-4">
                 <label className="label">
@@ -130,22 +130,22 @@ const AddPost = () => {
                     <option value="Health">Health</option>
                 </select> */}
             </div>
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col md:flex-row gap-4 ">
             <div className="form-control mb-4 w-1/2 ">
                 <label className="label">
                     <span className="label-text">UpVotes </span>
                 </label>
-                <input type="number" name="upVotes" className="input input-bordered" min="0" />
+                <input type="number" name="upVotes" className="input input-bordered dark:bg-white" min="0" />
             </div>
             <div className="form-control mb-4 w-1/2">
                 <label className="label">
                     <span className="label-text">DownVotes </span>
                 </label>
-                <input type="number" name="downVotes" className="input input-bordered" min="0" />
+                <input type="number" name="downVotes" className="input input-bordered dark:bg-white" min="0" />
             </div>
             </div>
           
-            <button type="submit" className="btn bg-lime-500 bg-opacity-50 w-full">
+            <button type="submit" className="btn bg-lime-500 bg-opacity-50 w-full dark:bg-lime-500 dark:border-none dark:hover:bg-lime-600 dark:text-black">
                 Add Post
             </button>
         </form>

@@ -70,17 +70,17 @@ const Login = () => {
     // }
 
     return (
-        <div className='bg-base-200 dark:bg-base-200 dark:text-black'>
+        <div className='bg-base-200 dark:bg-white dark:text-black'>
             <Helmet>
                 <title>Forum | Login</title>
             </Helmet>
-            <div className=" bg-base-200 ">
+            <div className=" bg-base-200 dark:bg-white dark:text-black">
                 <div className=" sm:flex-col md:flex justify-center  items-center mx-auto py-8">
                     <div className="text-center md:w-1/2 ">
                         <h1 className="text-5xl font-bold">Login now!</h1>
                         <p className="text-lg mt-4">Login to your account to continue.</p>
                     </div>
-                    <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100 mt-4">
+                    <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100 mt-4 dark:bg-white">
                         <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -90,7 +90,7 @@ const Login = () => {
                                 placeholder="email" 
                                 value = {email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="input input-bordered" />
+                                className="input input-bordered dark:bg-white" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -98,7 +98,7 @@ const Login = () => {
                                 </label>
                                 <input type="password" name="password" 
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}placeholder="password" className="input input-bordered" />
+                                onChange={(e) => setPassword(e.target.value)}placeholder="password" className="input input-bordered dark:bg-white" />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
@@ -115,21 +115,21 @@ const Login = () => {
                                 <button 
                                     type="button" 
                                     onClick={fillAdminCredentials} 
-                                    className="px-4 py-2 bg-lime-500 bg-opacity-50 text-white rounded-lg hover:bg-lime-600 transition"
+                                    className="px-4 py-2 bg-lime-500 bg-opacity-50 text-white rounded-lg hover:bg-lime-600 transition dark:bg-lime-500 dark:hover:bg-lime-600 dark:border-none dark:hover:text-white "
                                 >
                                     Admin Login
                                 </button>
                                 <button 
                                     type="button" 
                                     onClick={fillUserCredentials} 
-                                    className="px-4 py-2 bg-lime-500 bg-opacity-50 text-white rounded-lg hover:bg-lime-600 transition"
+                                    className="px-4 py-2 bg-lime-500 bg-opacity-50 text-white rounded-lg hover:bg-lime-600 transition dark:bg-lime-500 dark:hover:bg-lime-600 dark:border-none dark:hover:text-white "
                                 >
                                     User Login
                                 </button>
                             </div>
                             <div className="form-control mt-6">
                                
-                                <input disabled={false} className="btn bg-lime-500 bg-opacity-50" type="submit" value="Login" />
+                                <input disabled={false} className="btn bg-lime-500 bg-opacity-50 dark:bg-lime-500 dark:border-none dark:text-black dark:hover:text-white" type="submit" value="Login" />
                             </div>
                         </form>
                         <p className='px-6'><small className='text-xl font-semibold hover:bg-lime-500'>New Here? <Link to="/register">Create an account</Link> </small></p>
