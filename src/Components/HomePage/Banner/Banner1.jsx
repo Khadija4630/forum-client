@@ -172,7 +172,8 @@ const Banner = () => {
                     posts.map((post) => (
                         <Link to={`/post/${post._id}`} key={post._id} onClick={() => console.log("Navigating to", post._id)}>
                         <motion.div
-                            className="p-4 bg-white shadow rounded-lg"
+ className="p-5 bg-white shadow-sm mb-4 rounded-large dark:bg-zinc-900 dark:text-white  hover:shadow-md hover:scale-[1.01] transition-all duration-200  rounded-2xl border dark:border-zinc-800"
+                           
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3 }}
@@ -182,9 +183,9 @@ const Banner = () => {
                                 alt={post.title}
                                 className="w-full h-40 object-cover rounded-lg mb-3"
                             />
-                            <h3 className="text-lg font-bold">{post.title}</h3>
-                            <p>{post.description}</p>
-                            <p>
+                            <h3 className="text-lg font-bold mb-2">{post.title}</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-2">{post.description}</p>
+                            {/* <p>
                                 <strong>Tags:</strong> {post.tags.join(", ")}
                             </p>
                             <p>
@@ -192,10 +193,15 @@ const Banner = () => {
                             </p>
                             <p>
                                 <strong>Votes:</strong> {post.upVote - post.downVote}
-                            </p>
+                            </p> */}
+                             <div className="flex flex-wrap justify-between text-sm text-gray-500 dark:text-gray-400">
+      <span>💬 {post.commentsCount} comments</span>
+      <span>⬆️ {post.upVote - post.downVote} votes</span>
+      <span>🏷️ {post.tags.join(", ")}</span>
+    </div>
                             <div>
                                 <h3 className="text-lg font-medium">{post.authorName}</h3>
-                                    <p className="text-sm text-gray-500">{post.createdAt}</p>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">{post.createdAt}</p>
                                 </div>
                         </motion.div>
                         </Link>
