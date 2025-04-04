@@ -11,6 +11,7 @@ import Banner2 from "../../../assets/banner2.jpg";
 import useFetchTags from "../../Hooks/useFetchTags.jsx";
 import { useSearchParams } from "react-router-dom";
 import useFetchPosts from "../../Hooks/useFetchBanner";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -163,14 +164,14 @@ const Banner = () => {
                     </button>
                 </div>
             </div>
-
+           
             <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
                 {postsLoading ? (
                     <p>Loading...</p>
                 ) : posts.length > 0 ? (
                     posts.map((post) => (
+                        <Link to={`/post/${post._id}`} key={post._id} onClick={() => console.log("Navigating to", post._id)}>
                         <motion.div
-                            key={post._id}
                             className="p-4 bg-white shadow rounded-lg"
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -197,11 +198,14 @@ const Banner = () => {
                                     <p className="text-sm text-gray-500">{post.createdAt}</p>
                                 </div>
                         </motion.div>
+                        </Link>
+                        
                     ))
                 ) : (
                     <p>No posts found.</p>
                 )}
             </div>
+          
         </div>
     );
 };

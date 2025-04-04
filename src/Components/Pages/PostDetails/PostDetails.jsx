@@ -11,6 +11,8 @@ const PostDetails = () => {
     const { _id } = useParams();
     const { user } = useAuth();
     const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure();
+
 
     const [post, setPost] = useState(null);
     const [comment, setComment] = useState("");
@@ -22,7 +24,7 @@ const PostDetails = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const { data } = await useAxiosSecure.get(`/posts/${_id}`);
+                const { data } = await axiosSecure.get(`/posts/${_id}`);
                 setPost(data.post);
                 setUpvoteCount(data.post.upvote);
                 setDownvoteCount(data.post.downvote);

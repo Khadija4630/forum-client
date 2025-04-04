@@ -35,6 +35,8 @@ const Posts = () => {
                    <p>Sort by Popularity</p>
                     <p className="mt-1 ml-1"> <FaArrowTrendUp></FaArrowTrendUp> </p>
                 </button>
+                
+                <Link to={`/post/${post._id}`} key={post._id} onClick={() => console.log("Navigating to", post._id)}>
                 <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                
  
@@ -43,7 +45,7 @@ const Posts = () => {
         <p>Loading...</p> 
       ) :
      posts.map((post) => (
-      <Link to={`/post/${post._id}`} key={post._id}>
+      
         <div className="p-5 bg-white shadow-sm mb-4 dark:bg-zinc-900 dark:text-white  hover:shadow-md hover:scale-[1.01] transition-all duration-200  rounded-2xl border dark:border-zinc-800">
              <div className="flex items-center mb-3">
                                 <img
@@ -72,11 +74,14 @@ const Posts = () => {
       <span>⬆️ {post.upVote - post.downVote} votes</span>
       <span>🏷️ {post.tags.join(", ")}</span>
     </div>
+   
         </div>
-        </Link>
+       
       ))
 }
+
   </div>
+  </Link>
   </div> 
                 <div className="mt-4 flex items-center justify-center space-x-4">
     <button
