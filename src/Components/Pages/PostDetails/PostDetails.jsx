@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { axiosSecure } from "../utils/axiosInstances";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../Hooks/useAuth";
 import { FacebookShareButton, WhatsappShareButton } from 'react-share';
 import { toast } from "react-toastify";
 
@@ -22,7 +22,7 @@ const PostDetails = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const { data } = await axiosSecure.get(`/posts/${_id}`);
+                const { data } = await useAxiosSecure.get(`/posts/${_id}`);
                 setPost(data.post);
                 setUpvoteCount(data.post.upvote);
                 setDownvoteCount(data.post.downvote);

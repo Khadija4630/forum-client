@@ -1,4 +1,5 @@
 // import {toast } from 'react-toastify';
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import useFetchPosts from "../../Hooks/useFetchBanner";
@@ -42,8 +43,9 @@ const Posts = () => {
         <p>Loading...</p> 
       ) :
      posts.map((post) => (
-        <div key={post._id} className="p-4 bg-white shadow mb-4">
-             <div className="flex items-center mb-2">
+      <Link to={`/post/${post._id}`} key={post._id}>
+        <div className="p-5 bg-white shadow-sm mb-4 dark:bg-zinc-900 dark:text-white  hover:shadow-md hover:scale-[1.01] transition-all duration-200  rounded-2xl border dark:border-zinc-800">
+             <div className="flex items-center mb-3">
                                 <img
                                     src={post.authorPicture || "/default-avatar.png"}
                                     alt="Author"
@@ -51,12 +53,12 @@ const Posts = () => {
                                 />
                                 <div>
                                 <h3 className="text-lg font-bold">{post.authorName}</h3>
-                                    <p className="text-sm text-gray-500">{post.createdAt}</p>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">{post.createdAt}</p>
                                 </div>
                             </div>
-          <h3 className="text-lg font-bold">{post.title}</h3>
-          <p>{post.description}</p>
-          <p>
+          <h3 className="text-lg font-bold mb-2">{post.title}</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-2">{post.description}</p>
+          {/* <p>
             <strong>Tags:</strong> {post.tags.join(", ")}
           </p>
           <p>
@@ -64,8 +66,14 @@ const Posts = () => {
           </p>
           <p>
             <strong>Votes:</strong> {post.upVote - post.downVote}
-          </p>
+          </p> */}
+           <div className="flex flex-wrap justify-between text-sm text-gray-500 dark:text-gray-400">
+      <span>💬 {post.commentsCount} comments</span>
+      <span>⬆️ {post.upVote - post.downVote} votes</span>
+      <span>🏷️ {post.tags.join(", ")}</span>
+    </div>
         </div>
+        </Link>
       ))
 }
   </div>

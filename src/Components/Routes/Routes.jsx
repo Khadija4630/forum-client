@@ -21,7 +21,7 @@ import MakeAnnouncement from "../Pages/Dashboard/AdminDashboard/MakeAnnouncement
 import NotFound from "../Pages/NotFound/NotFound";
 import CommentsPage from "../Pages/CommentsPage/CommentsPage";
 import AdminOverview from "../Pages/Dashboard/AdminDashboard/AdminOverview/AdminOverview";
-
+import PostDetails from "../Pages/PostDetails/PostDetails";
 
   export const router = createBrowserRouter([
     {
@@ -44,10 +44,10 @@ import AdminOverview from "../Pages/Dashboard/AdminDashboard/AdminOverview/Admin
           path:"/register",
           element:<Register></Register>
         },
-        // {
-        //   path:"/post/:id",
-        //   element:<PostDetails></PostDetails>
-        // },
+        {
+          path:"/post/:_id",
+          element:<PostDetails></PostDetails>
+        },
         {
           path: "/*",
           element:<NotFound></NotFound>,
